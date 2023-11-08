@@ -1,3 +1,5 @@
+'use strict';
+
 //When scroll page, pageY > header height -> change header color
 const header = document.querySelector('.header')
 const headerHeight = header.getBoundingClientRect().height
