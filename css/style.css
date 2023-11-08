@@ -43,7 +43,7 @@ button {
   border: 0;
 }
 button:focus {
-  outline: 1px solid var(--color-accent);
+  outline: 1px solid transparent;
 }
 /* Common */
 .section {
@@ -91,12 +91,22 @@ button:focus {
 .header__logo__title {
   font-size: 1.8rem;
 }
+.header__toggle {
+  display: none;
+  color: var(--color-white);
+  font-size: 1.5rem;
+  position: absolute;
+  top: 1.3rem;
+  right: 1rem;
+}
 .header__menu {
   display: flex;
   gap: 4px;
 }
 .header__menu__item {
+  display: block;
   padding: 8px 16px;
+  border-bottom: 1px solid transparent;
 }
 .header__menu__item:hover {
   border-bottom: 1px solid var(--color-accent);
@@ -367,7 +377,7 @@ button:focus {
 }
 @media screen and (max-width: 768px) {
   .section {
-    padding: 3rem 2rem;
+    padding: 4rem 2rem;
   }
   .title {
     font-size: 2rem;
@@ -379,11 +389,18 @@ button:focus {
     flex-direction: column;
     align-items: start;
   }
+  .header__toggle {
+    display: block;
+  }
   .header__menu {
+    display: none;
     flex-direction: column;
     text-align: center;
     padding: 1rem 4rem;
     gap: 1rem;
+  }
+  .header__menu.open {
+    display: flex;
   }
   .header_nav {
     width: 100%;
@@ -423,5 +440,9 @@ button:focus {
     height: 3rem;
     bottom: 1.5rem;
     right: 1.5rem;
+    transition: opacity 300ms ease;
+  }
+  .display-none {
+    display: none;
   }
 }
