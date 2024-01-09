@@ -120,11 +120,32 @@ button:focus {
 }
 /* Home */
 #home {
+  position: relative;
   background-color: var(--color-primary);
   color: var(--color-text);
   padding: 5rem 1rem;
   padding-top: 7rem;
   text-align: center;
+}
+.home__div {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg);
+}
+
+.home__div svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 60px;
+}
+
+.home__div .shape-fill {
+  fill: #ffffff;
 }
 .home__avatar {
   width: 250px;
@@ -206,8 +227,29 @@ button:focus {
 
 /* Skills */
 #skills {
+  position: relative;
   background-color: var(--color-primary-variant);
   color: var(--color-text);
+}
+.skills__div {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg);
+}
+
+.skills__div svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 60px;
+}
+
+.skills__div .shape-fill {
+  fill: var(--color-primary);
 }
 .skills {
   display: grid;
@@ -353,9 +395,30 @@ button:focus {
 }
 /* Footer */
 #contact {
+  position: relative;
   /* background-color: var(--color-primary);
   color: var(--color-text); */
 }
+.footer__div {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.footer__div svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 60px;
+}
+
+.footer__div .shape-fill {
+  fill: var(--color-primary);
+}
+
 .contact__links {
   display: flex;
   justify-content: center;
