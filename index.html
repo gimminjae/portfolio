@@ -1,56 +1,51 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- SEO -->
-    <title>Minjae&#39;s Portfolio</title>
-    <meta name="description" content="Portfolio for Junior Developer Minjae" />
-    <meta name="author" content="Minjae" />
+    <title>김민재 | Junior Full-Stack Software Engineer</title>
+    <meta
+      name="description"
+      content="김민재 주니어 풀스택 개발자 포트폴리오 - Java/Kotlin Spring 백엔드와 React/Next.js 프론트엔드 개발 경험"
+    />
+    <meta name="author" content="김민재" />
     <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
-    <!-- OG (open graph data) -->
-    <meta property="og:title" content="Minjae&#39;s Portfolio" />
+    <meta property="og:title" content="김민재 포트폴리오" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://gimminjae.github.io/portfolio/" />
     <meta
       property="og:image"
       content="https://gimminjae.github.io/portfolio/images/og.webp"
     />
-    <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap"
       rel="stylesheet"
     />
-    <!-- Font Awesome -->
     <script
       src="https://kit.fontawesome.com/4427719890.js"
       crossorigin="anonymous"
     ></script>
-    <!-- TypeIt-->
     <script src="https://unpkg.com/typeit@8.7.1/dist/index.umd.js"></script>
-    <!-- CSS -->
     <link rel="stylesheet" href="css/style.css" />
-    <!-- Javascript -->
     <script type="module" src="src/main.js" defer></script>
     <script type="module" src="src/projects.js" defer></script>
     <script type="module" src="src/active_me.js" defer></script>
     <script type="module" src="src/type.js" defer></script>
   </head>
   <body>
-    <!-- Header -->
     <header class="header">
       <div class="header__logo">
         <img class="header__logo__img" src="images/favicon.ico" alt="profile" />
-        <h1 header__logo__title><a href="#">Minjae</a></h1>
+        <h1 class="header__logo__title"><a href="#">Minjae Kim</a></h1>
       </div>
       <nav class="header_nav">
         <ul class="header__menu">
           <li><a class="header__menu__item active" href="#home">Home</a></li>
           <li><a class="header__menu__item" href="#about">About</a></li>
           <li><a class="header__menu__item" href="#skills">Skills</a></li>
-          <li><a class="header__menu__item" href="#work">My Work</a></li>
+          <li><a class="header__menu__item" href="#work">Experience</a></li>
           <li><a class="header__menu__item" href="#contact">Contact</a></li>
         </ul>
       </nav>
@@ -58,152 +53,135 @@
         <i class="fa-solid fa-bars"></i>
       </button>
     </header>
-    <!-- Main -->
+
     <main>
-      <!-- Home -->
       <section id="home">
         <div class="home__container">
           <img
             class="home__avatar"
             src="images/portfolio.png"
-            alt="Minjae's profile"
+            alt="김민재 프로필 이미지"
           />
-          <h2 class="home__title" aria-label="Hi! I'm Junior Developer, Minjae">
-            Hi! <br />
-            I'm <strong class="home__title--strong">Junior Developer</strong> ,
-            Minjae
+          <h2
+            class="home__title"
+            aria-label="Hi! I'm Junior Software Engineer, Minjae Kim"
+          >
+            안녕하세요! <br />
+            저는 <strong class="home__title--strong">Junior Software Engineer</strong>
+            김민재입니다.
           </h2>
-          <p class="home__description">Developers dreaming of a full stack</p>
+          <p class="home__description">
+            Java/Kotlin Spring 백엔드와 React/Next.js 프론트엔드를 다루는 풀스택 개발자
+          </p>
           <a class="home__contact" href="#contact">Contact Me</a>
         </div>
       </section>
-      <!-- About -->
+
       <section class="section max-container" id="about">
         <h2 class="title">About Me</h2>
-        <p class="description">
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deleniti
-          asperiores placeat sit commodi culpa eos veritatis dolore distinctio
-          nemo tenetur nesciunt similique cum laborum reprehenderit, id ipsum
-          aperiam eum aliquam?
+        <p class="description">재사용성과 확장성을 고민하며, 서비스 전체 흐름을 이해하는 개발자</p>
+        <p>
+          2021년 12월부터 자바 백엔드 개발자로 커리어를 시작해, 현재는 Kotlin/Spring 기반
+          백엔드와 React/Next.js 기반 프론트엔드를 함께 개발하고 있습니다. 기능 구현뿐 아니라
+          운영 이슈 대응, 성능 개선, 아키텍처 도입(MSA/Hexagonal)까지 폭넓게 경험했습니다.
+          프론트엔드 공통 컴포넌트/유틸 함수 공통화로 팀 생산성을 향상시키고, 실제 사용자 경험을
+          개선하는 데 집중해왔습니다.
         </p>
         <ul class="majors">
           <li class="major">
-            <i class="fa-brands fa-html5 major__icon"></i>
+            <i class="fa-brands fa-react major__icon"></i>
             <p class="major__title">Front-end</p>
-            <p>HTML, CSS, Javascript, React, Vue</p>
+            <p>React.js, Next.js, TypeScript, Redux, Tailwind CSS, Formik</p>
           </li>
           <li class="major">
             <i class="fa-solid fa-server major__icon"></i>
             <p class="major__title">Back-end</p>
-            <p>Java, Spring Boot, MySQL</p>
+            <p>Kotlin, Java, Spring Boot, JPA/MyBatis, MSA, MySQL, PostgreSQL</p>
           </li>
         </ul>
         <ul class="jobs">
           <li class="job">
-            <img src="" alt="idr logo" />
+            <img src="images/favicon.ico" alt="아이디알시스템 로고" />
             <div>
-              <p class="job__name">fullstack developer</p>
-              <p class="job__period">2022 Dec - Present</p>
+              <p class="job__name">아이디알시스템 | Junior Full-Stack Software Engineer</p>
+              <p class="job__period">2022.12 - Present</p>
             </div>
           </li>
           <li class="job">
-            <img src="" alt="likelion logo" />
+            <img src="images/favicon.ico" alt="멋쟁이사자처럼 로고" />
             <div>
-              <p class="job__name">Java Back-end Student</p>
-              <p class="job__period">2022 June - 2022 November</p>
+              <p class="job__name">멋쟁이사자처럼 백엔드스쿨 KDT</p>
+              <p class="job__period">2022.06 - 2022.11</p>
             </div>
           </li>
         </ul>
       </section>
-      <!-- Skills -->
+
       <section class="section" id="skills">
         <div class="max-container">
-          <h2 class="title">My Skills</h2>
-          <p class="description">Skills & Attributes</p>
+          <h2 class="title">Technical Skills</h2>
+          <p class="description">실무 중심 기술 스택</p>
           <p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-            Consectetur facere quos omnis perspiciatis at aliquid optio! Ut,
-            facere velit doloremque assumenda iusto sequi, dolores libero
-            accusantium dolore nesciunt quaerat rem.
+            백엔드에서 시작해 프론트엔드, 운영, 성능 개선까지 경험하며 서비스 개발 전반을
+            다루고 있습니다. 새로운 도메인과 기술에도 빠르게 적응하며, 팀이 재사용 가능한 구조를
+            만들기 위해 꾸준히 개선합니다.
           </p>
           <div class="skills">
             <section class="skills__coding">
               <h3 class="skills__title">Coding Skills</h3>
               <ul>
                 <li class="bar">
-                  <div class="bar__metadata">
-                    <span>HTML</span><span>90%</span>
-                  </div>
-                  <div class="bar__bg">
-                    <div class="bar__value" style="width: 90%"></div>
-                  </div>
+                  <div class="bar__metadata"><span>Java / Kotlin</span><span>90%</span></div>
+                  <div class="bar__bg"><div class="bar__value" style="width: 90%"></div></div>
                 </li>
                 <li class="bar">
-                  <div class="bar__metadata">
-                    <span>CSS</span><span>90%</span>
-                  </div>
-                  <div class="bar__bg">
-                    <div class="bar__value" style="width: 90%"></div>
-                  </div>
+                  <div class="bar__metadata"><span>Spring Boot / JPA</span><span>88%</span></div>
+                  <div class="bar__bg"><div class="bar__value" style="width: 88%"></div></div>
                 </li>
                 <li class="bar">
-                  <div class="bar__metadata">
-                    <span>Javascript</span><span>90%</span>
-                  </div>
-                  <div class="bar__bg">
-                    <div class="bar__value" style="width: 90%"></div>
-                  </div>
+                  <div class="bar__metadata"><span>React.js / Next.js</span><span>85%</span></div>
+                  <div class="bar__bg"><div class="bar__value" style="width: 85%"></div></div>
                 </li>
                 <li class="bar">
-                  <div class="bar__metadata">
-                    <span>Vue</span><span>90%</span>
-                  </div>
-                  <div class="bar__bg">
-                    <div class="bar__value" style="width: 90%"></div>
-                  </div>
+                  <div class="bar__metadata"><span>JavaScript / TypeScript</span><span>85%</span></div>
+                  <div class="bar__bg"><div class="bar__value" style="width: 85%"></div></div>
                 </li>
                 <li class="bar">
-                  <div class="bar__metadata">
-                    <span>React</span><span>90%</span>
-                  </div>
-                  <div class="bar__bg">
-                    <div class="bar__value" style="width: 90%"></div>
-                  </div>
+                  <div class="bar__metadata"><span>MySQL / PostgreSQL</span><span>82%</span></div>
+                  <div class="bar__bg"><div class="bar__value" style="width: 82%"></div></div>
                 </li>
                 <li class="bar">
-                  <div class="bar__metadata">
-                    <span>Java & Spring</span><span>90%</span>
-                  </div>
-                  <div class="bar__bg">
-                    <div class="bar__value" style="width: 90%"></div>
-                  </div>
+                  <div class="bar__metadata"><span>MSA / Hexagonal Architecture</span><span>75%</span></div>
+                  <div class="bar__bg"><div class="bar__value" style="width: 75%"></div></div>
                 </li>
               </ul>
             </section>
             <section class="skills__tools">
               <h3 class="skills__title">Tools</h3>
               <ul>
-                <li>VScode</li>
-                <li>Intellij</li>
-                <li>Post man</li>
-                <li>DBeaver</li>
-                <li>Eclipse</li>
+                <li>IntelliJ / VSCode / Cursor</li>
+                <li>GitLab / AWS CodeCommit</li>
+                <li>DBeaver / ERDCloud</li>
+                <li>ArgoCD / SonarQube</li>
+                <li>Axios / ESLint</li>
               </ul>
             </section>
             <section class="skills__etc">
-              <h3 class="skills__title">Etc</h3>
+              <h3 class="skills__title">Education & Certification</h3>
               <ul>
-                <li>Git</li>
+                <li>SQLD (2021.11)</li>
+                <li>멋쟁이사자처럼 백엔드스쿨 KDT (2022.06-11)</li>
+                <li>경기대학교 행정학과 중퇴</li>
               </ul>
             </section>
           </div>
         </div>
       </section>
-      <!-- Work -->
+
       <section class="section" id="work">
         <div class="max-container">
-          <h2 class="title">My Work</h2>
-          <p class="description">Projects</p>
+          <h2 class="title">Work Experience Highlights</h2>
+          <p class="description">주요 프로젝트 및 성과</p>
           <ul class="categories">
             <li>
               <button class="category category--selected" data-category="all">
@@ -212,142 +190,114 @@
             </li>
             <li>
               <button class="category" data-category="front-end">
-                Front-end <span class="category__count">4</span>
+                Front-end <span class="category__count">3</span>
               </button>
             </li>
             <li>
               <button class="category" data-category="back-end">
-                Back-end <span class="category__count">2</span>
+                Back-end <span class="category__count">3</span>
               </button>
             </li>
             <li>
               <button class="category" data-category="mobile">
-                Mobile <span class="category__count">2</span>
+                Operations <span class="category__count">2</span>
               </button>
             </li>
           </ul>
           <ul class="projects">
             <li class="project" data-type="front-end">
-              <a href="#" target="_blank">
-                <img
-                  src="images/portfolio-other-images/projects/project1.webp"
-                  alt="project1"
-                  class="project__img"
-                />
+              <a href="#" target="_self">
+                <img src="images/portfolio-other-images/projects/project1.webp" alt="새롬 케어 라이프 체크 FO UI 리뉴얼" class="project__img" />
                 <div class="project__metadata">
-                  <h3 class="project__title">Project #1</h3>
-                  <p>Clone Coding with HTML, CSS</p>
-                </div>
-              </a>
-            </li>
-            <li class="project" data-type="front-end">
-              <a href="#" target="_blank">
-                <img
-                  src="images/portfolio-other-images/projects/project2.webp"
-                  alt="project1"
-                  class="project__img"
-                />
-                <div class="project__metadata" data-type="back-end">
-                  <h3 class="project__title">Project #1</h3>
-                  <p>Clone Coding with HTML, CSS</p>
-                </div>
-              </a>
-            </li>
-            <li class="project" data-type="mobile">
-              <a href="#" target="_blank">
-                <img
-                  src="images/portfolio-other-images/projects/project3.webp"
-                  alt="project1"
-                  class="project__img"
-                />
-                <div class="project__metadata">
-                  <h3 class="project__title">Project #1</h3>
-                  <p>Clone Coding with HTML, CSS</p>
-                </div>
-              </a>
-            </li>
-            <li class="project" data-type="front-end">
-              <a href="#" target="_blank">
-                <img
-                  src="images/portfolio-other-images/projects/project4.webp"
-                  alt="project1"
-                  class="project__img"
-                />
-                <div class="project__metadata">
-                  <h3 class="project__title">Project #1</h3>
-                  <p>Clone Coding with HTML, CSS</p>
+                  <h3 class="project__title">라이프 체크 FO UI 리뉴얼</h3>
+                  <p>검진기관/검진프로그램 비교 및 금액 비교 기능 구현으로 사용자 선택 경험 개선</p>
                 </div>
               </a>
             </li>
             <li class="project" data-type="back-end">
-              <a href="#" target="_blank">
-                <img
-                  src="images/portfolio-other-images/projects/project5.webp"
-                  alt="project1"
-                  class="project__img"
-                />
+              <a href="#" target="_self">
+                <img src="images/portfolio-other-images/projects/project2.webp" alt="검진기관 CAPA 설정 기능" class="project__img" />
                 <div class="project__metadata">
-                  <h3 class="project__title">Project #1</h3>
-                  <p>Clone Coding with HTML, CSS</p>
-                </div>
-              </a>
-            </li>
-            <li class="project" data-type="mobile">
-              <a href="#" target="_blank">
-                <img
-                  src="images/portfolio-other-images/projects/project6.webp"
-                  alt="project1"
-                  class="project__img"
-                />
-                <div class="project__metadata">
-                  <h3 class="project__title">Project #1</h3>
-                  <p>Clone Coding with HTML, CSS</p>
-                </div>
-              </a>
-            </li>
-            <li class="project" data-type="front-end">
-              <a href="#" target="_blank">
-                <img
-                  src="images/portfolio-other-images/projects/project7.webp"
-                  alt="project1"
-                  class="project__img"
-                />
-                <div class="project__metadata">
-                  <h3 class="project__title">Project #1</h3>
-                  <p>Clone Coding with HTML, CSS</p>
+                  <h3 class="project__title">검진기관 CAPA 설정 기능</h3>
+                  <p>Kotlin/Spring 기반 예약 수용량 관리 백엔드 개발 및 유지보수</p>
                 </div>
               </a>
             </li>
             <li class="project" data-type="back-end">
-              <a href="#" target="_blank">
-                <img
-                  src="images/portfolio-other-images/projects/project8.webp"
-                  alt="project1"
-                  class="project__img"
-                />
+              <a href="#" target="_self">
+                <img src="images/portfolio-other-images/projects/project3.webp" alt="MSA, Hexagonal Architecture 도입" class="project__img" />
                 <div class="project__metadata">
-                  <h3 class="project__title">Project #1</h3>
-                  <p>Clone Coding with HTML, CSS</p>
+                  <h3 class="project__title">MSA & Hexagonal 아키텍처 도입</h3>
+                  <p>도메인 중심 구조 전환으로 유지보수성/확장성 향상</p>
+                </div>
+              </a>
+            </li>
+            <li class="project" data-type="front-end">
+              <a href="#" target="_self">
+                <img src="images/portfolio-other-images/projects/project4.webp" alt="공통 컴포넌트 및 함수 공통화" class="project__img" />
+                <div class="project__metadata">
+                  <h3 class="project__title">프론트엔드 공통화</h3>
+                  <p>React 컴포넌트/유틸 공통화로 개발 생산성 향상</p>
+                </div>
+              </a>
+            </li>
+            <li class="project" data-type="back-end">
+              <a href="#" target="_self">
+                <img src="images/portfolio-other-images/projects/project5.webp" alt="DB 부하 API 로직 개선" class="project__img" />
+                <div class="project__metadata">
+                  <h3 class="project__title">고부하 API 성능 개선</h3>
+                  <p>DB 병목 구간을 개선해 서비스 응답 성능 및 사용자 경험 개선</p>
+                </div>
+              </a>
+            </li>
+            <li class="project" data-type="mobile">
+              <a href="#" target="_self">
+                <img src="images/portfolio-other-images/projects/project6.webp" alt="특정 사용자 네트워크 이슈 해결" class="project__img" />
+                <div class="project__metadata">
+                  <h3 class="project__title">예약 프로세스 네트워크 이슈 해결</h3>
+                  <p>일부 사용자에서만 발생하던 장애 원인 분석 및 해결</p>
+                </div>
+              </a>
+            </li>
+            <li class="project" data-type="front-end">
+              <a href="#" target="_self">
+                <img src="images/portfolio-other-images/projects/project7.webp" alt="핀앳 서비스 페이지 성능 개선" class="project__img" />
+                <div class="project__metadata">
+                  <h3 class="project__title">핀앳 페이지 렌더링 80% 개선</h3>
+                  <p>API 통합, 무한 스크롤, 페이징 적용으로 저성능 페이지 최적화</p>
+                </div>
+              </a>
+            </li>
+            <li class="project" data-type="mobile">
+              <a href="#" target="_self">
+                <img src="images/portfolio-other-images/projects/project8.webp" alt="전자상거래 백오피스 React 마이그레이션" class="project__img" />
+                <div class="project__metadata">
+                  <h3 class="project__title">백오피스 React 마이그레이션</h3>
+                  <p>Thymeleaf 기반 화면을 React.js로 전환하고 SonarQube 기반 품질 개선</p>
                 </div>
               </a>
             </li>
           </ul>
         </div>
       </section>
-      <!-- Testimonials -->
-      <!-- Arrow up -->
+
       <aside class="arrow-up">
         <a href="#home" title="back to top">
           <i class="fa-solid fa-arrow-up"></i>
         </a>
       </aside>
     </main>
-    <!-- Footer -->
+
     <footer class="section" id="contact">
       <div class="max-container">
         <h2 class="title">Let's talk</h2>
-        <p class="description">min356812@naver.com</p>
+        <p class="description">min356812@naver.com | 010-2952-5866</p>
         <ul class="contact__links">
+          <li>
+            <a class="contact__link" href="mailto:min356812@naver.com" title="email">
+              <i class="fa-solid fa-envelope"></i>
+            </a>
+          </li>
           <li>
             <a
               class="contact__link"
@@ -369,7 +319,7 @@
             </a>
           </li>
         </ul>
-        <p>@Minjae - All rights reserved</p>
+        <p>© Minjae Kim - All rights reserved</p>
       </div>
     </footer>
   </body>
