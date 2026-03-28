@@ -5,11 +5,15 @@ const categories = document.querySelector('.categories');
 const projects = document.querySelectorAll('.project');
 const projectsContainer = document.querySelector('.projects');
 categories.addEventListener('click', (event) => {
-    const filter = event.target.dataset.category;
+    const button = event.target.closest('.category');
+    if(button == null) {
+        return;
+    }
+    const filter = button.dataset.category;
     if(filter == null) {
         return;
     }
-    handleActiveSelection(event.target);
+    handleActiveSelection(button);
     filterProjects(filter);
 });
 
@@ -22,7 +26,8 @@ function filterProjects(filter) {
     // project filtering
     projectsContainer.classList.add('anim-out');
     projects.forEach(project => {
-        if(filter === 'all' || filter === project.dataset.type) {
+        const typeTokens = project.dataset.type.split(' ');
+        if(filter === 'all' || typeTokens.includes(filter)) {
             project.style.display = 'block';
         } else {
             project.style.display = 'none';
