@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Markdown Viewer</title>
+  <style>
+    body {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 0 16px;
+      font-family: Arial, sans-serif;
+      line-height: 1.7;
+    }
+  </style>
+</head>
+<body>
+  <div id="content">불러오는 중...</div>
+
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script>
+    async function loadMarkdown() {
+      const params = new URLSearchParams(location.search);
+      const file = params.get('file');
+
+      if (!file) {
+        document.getElementById('content').textContent = '파일 경로가 없습니다.';
+        return;
+      }
+
+      try {
+        const res = await fetch(file);
+        if (!res.ok) throw new Error('파일을 불러오지 못했습니다.');
+
+        const md = await res.text();
+        document.getElementById('content').innerHTML = marked.parse(md);
+      } catch (e) {
+        document.getElementById('content').textContent = e.message;
+      }
+    }
+
+    loadMarkdown();
+  </script>
+</body>
+</html>
