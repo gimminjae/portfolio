@@ -25,7 +25,7 @@
         --radius-xl: 24px;
         --radius-lg: 20px;
         --radius-md: 16px;
-        --content-width: 860px;
+        --content-width: 1032px;
       }
 
       * {
@@ -176,14 +176,37 @@
 
       .toc__list {
         margin: 0;
-        padding-left: 18px;
+        padding-left: 0;
+        list-style: none;
       }
 
       .toc__list li + li {
         margin-top: 8px;
       }
 
+      .toc__list ul {
+        margin: 8px 0 0;
+        padding-left: 16px;
+        list-style: none;
+        border-left: 1px solid rgba(165, 180, 204, 0.16);
+      }
+
+      .toc__item--level-1 > a {
+        color: var(--text);
+        font-weight: 700;
+      }
+
+      .toc__item--level-2 > a {
+        font-size: 0.96rem;
+      }
+
+      .toc__item--level-3 > a {
+        font-size: 0.93rem;
+      }
+
       .toc__list a {
+        display: block;
+        padding: 2px 0;
         color: var(--muted);
         text-decoration: none;
       }
@@ -589,7 +612,7 @@
       }
 
       function buildToc(container) {
-        const headings = Array.from(container.querySelectorAll("h2, h3, h4"));
+        const headings = Array.from(container.querySelectorAll("h1, h2, h3"));
         elements.tocList.innerHTML = "";
 
         if (headings.length === 0) {
@@ -598,24 +621,83 @@
           return;
         }
 
-        const fragment = document.createDocumentFragment();
+        const nodes = buildTocTree(headings);
+        appendTocNodes(nodes, elements.tocList);
+        elements.toc.classList.add("show");
+        elements.layout.classList.add("has-toc");
+      }
+
+      function buildTocTree(headings) {
+        const root = [];
+        const stack = [{ level: 0, children: root }];
+        const usedIds = new Set();
 
         headings.forEach((heading) => {
+          const rawLevel = Number.parseInt(heading.tagName.substring(1), 10);
+          const level = Number.isFinite(rawLevel) ? Math.min(Math.max(rawLevel, 1), 3) : 1;
+
           if (!heading.id) {
-            heading.id = slugify(heading.textContent || "section");
+            heading.id = createUniqueHeadingId(heading.textContent || "section", usedIds);
+          } else {
+            usedIds.add(heading.id);
           }
 
+          while (stack.length > 1 && level <= stack[stack.length - 1].level) {
+            stack.pop();
+          }
+
+          const parent = stack[stack.length - 1];
+          const adjustedLevel = Math.min(level, parent.level + 1);
+          const node = {
+            id: heading.id,
+            level: adjustedLevel,
+            text: heading.textContent || "",
+            children: [],
+          };
+
+          parent.children.push(node);
+          stack.push(node);
+        });
+
+        return root;
+      }
+
+      function appendTocNodes(nodes, listElement) {
+        const fragment = document.createDocumentFragment();
+
+        nodes.forEach((node) => {
           const item = document.createElement("li");
+          item.className = `toc__item toc__item--level-${node.level}`;
+
           const link = document.createElement("a");
-          link.href = `#${heading.id}`;
-          link.textContent = heading.textContent || "";
+          link.href = `#${node.id}`;
+          link.textContent = node.text;
           item.appendChild(link);
+
+          if (node.children.length > 0) {
+            const childList = document.createElement("ul");
+            appendTocNodes(node.children, childList);
+            item.appendChild(childList);
+          }
+
           fragment.appendChild(item);
         });
 
-        elements.tocList.appendChild(fragment);
-        elements.toc.classList.add("show");
-        elements.layout.classList.add("has-toc");
+        listElement.appendChild(fragment);
+      }
+
+      function createUniqueHeadingId(text, usedIds) {
+        const baseId = slugify(text) || "section";
+        let candidate = baseId;
+        let suffix = 2;
+
+        while (usedIds.has(candidate)) {
+          candidate = `${baseId}-${suffix}`;
+          suffix += 1;
+        }
+
+        usedIds.add(candidate);
+        return candidate;
       }
 
       function enhanceExternalLinks(container) {
