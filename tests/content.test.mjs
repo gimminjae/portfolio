@@ -5,10 +5,12 @@ import { loadContent, validateContent } from '../scripts/content.mjs';
 import { renderPage, escapeHtml } from '../src/render.js';
 const content = await loadContent();
 const original = JSON.parse(await readFile(new URL('./fixtures/original-projects.json', import.meta.url), 'utf8'));
-test('preserves all eight earlier contributions inside their service projects', () => {
+test('preserves seven retained contributions after the owner removed ecommerce', () => {
   const cases = content.projects.flatMap((project) => project.caseStudies);
+  // Owner commit 294419b removed ecommerce and its backoffice contribution.
+  const retained = original.filter(({ title }) => title !== '백오피스 React 마이그레이션');
   // The resume qualifies the original 80% claim as approximate.
-  assert.deepEqual(cases.map(({ title, summary }) => ({ title: title.replace('약 80%', '80%'), summary })), original);
+  assert.deepEqual(cases.map(({ title, summary }) => ({ title: title.replace('약 80%', '80%'), summary })), retained);
 });
 test('uses resume dates and distinguishes employment, other experience and education', () => {
   assert.equal(content.profile.experience.length, 1);
@@ -16,14 +18,14 @@ test('uses resume dates and distinguishes employment, other experience and educa
   assert.equal(content.profile.experience[0].period, '2022.12 — 2026.04');
   assert.equal(content.profile.otherExperience[0].organization, 'We Bible (위 바이블)');
   assert.equal(content.profile.otherExperience[0].period, '2026.02 — 현재');
-  const ecommerce = content.projects.find((p) => p.id === 'ecommerce');
-  assert.equal(ecommerce.organization, '아이디알시스템');
-  assert.equal(ecommerce.period, '2023.08 — 2024.02');
+  const seegene = content.projects.find((p) => p.id === 'seegene');
+  assert.equal(seegene.organization, '아이디알시스템');
+  assert.equal(seegene.period, '2023.08 — 2024.02');
   assert.ok(content.profile.background.some((item) => item.title === '정보처리산업기사' && item.detail === '2026.09'));
   assert.ok(content.profile.background.some((item) => item.title === '구리남자고등학교' && item.detail === '2019 · 졸업'));
 });
-test('includes all five resume projects and the newly supplied responsibilities', () => {
-  assert.deepEqual(content.projects.map((p) => p.id), ['we-bible', 'life-check', 'pinat', 'seegene', 'ecommerce']);
+test('includes the four selected projects and their responsibilities', () => {
+  assert.deepEqual(content.projects.map((p) => p.id), ['we-bible', 'life-check', 'pinat', 'seegene']);
   const pinat = content.projects.find((p) => p.id === 'pinat');
   assert.equal(pinat.metric.value, '약 80%');
   assert.ok(pinat.contributions.some((text) => text.includes('엑셀 다운로드')));
@@ -41,7 +43,7 @@ test('all navigation and preserved project anchors resolve in the generated page
   assert.equal(ids.length, new Set(ids).size);
   for (const [, target] of html.matchAll(/href="#([^"]+)"/g)) assert.ok(ids.includes(target), target);
   for (const p of content.projects) assert.ok(html.includes(`id="project-${p.id}"`));
-  for (const id of ['life-check-ui', 'capa', 'architecture', 'frontend-shared', 'api-performance', 'reservation-network', 'pinat', 'backoffice']) {
+  for (const id of ['life-check-ui', 'capa', 'architecture', 'frontend-shared', 'api-performance', 'reservation-network', 'pinat']) {
     assert.ok(ids.includes(`project-${id}`), `Missing earlier project anchor: ${id}`);
   }
 });
@@ -102,7 +104,7 @@ test('renders every project once beneath its assigned employer or activity', () 
   const activityStart = html.indexOf('id="experience-we-bible"');
   const company = html.slice(companyStart, activityStart);
   const activity = html.slice(activityStart, html.indexOf('<section id="skills"'));
-  for (const id of ['life-check', 'pinat', 'seegene', 'ecommerce']) assert.ok(company.includes(`id="project-${id}"`));
+  for (const id of ['life-check', 'pinat', 'seegene']) assert.ok(company.includes(`id="project-${id}"`));
   assert.ok(!company.includes('id="project-we-bible"'));
   assert.ok(activity.includes('id="project-we-bible"'));
   for (const project of content.projects) assert.equal(html.split(`id="project-${project.id}"`).length - 1, 1);
@@ -121,6 +123,15 @@ test('rejects missing, duplicate and unknown experience project assignments', ()
   assert.throws(() => validateContent(duplicate), /Project assigned more than once/);
   const unknown = structuredClone(content); unknown.profile.experience[0].projectIds.push('missing');
   assert.throws(() => validateContent(unknown), /Unknown experience project/);
+});
+test('keeps the owner-removed ecommerce content out of data and rendered output', () => {
+  const html = renderPage(content);
+  const jobs = [...content.profile.experience, ...content.profile.otherExperience];
+  assert.ok(!content.projects.some(({ id }) => id === 'ecommerce'));
+  assert.ok(jobs.every((job) => !job.projectIds.includes('ecommerce')));
+  for (const text of ['id="project-ecommerce"', 'id="project-backoffice"', '자사 이커머스 솔루션', '백오피스 React 마이그레이션']) {
+    assert.ok(!html.includes(text), text);
+  }
 });
 test('home page has complete content without JavaScript or remote libraries', () => {
   const html = renderPage(content);

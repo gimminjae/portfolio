@@ -9,7 +9,7 @@
 | 파일 | 관리하는 내용 |
 | --- | --- |
 | `content/profile.json` | 이름, 소개, 사진, 연락처, 경력, 기술, 교육·자격, 검색/공유 메타데이터 |
-| `content/projects.json` | 이력서 기준 서비스 프로젝트 5개와 기존 작업 8개의 상세 기여 |
+| `content/projects.json` | 선택된 서비스 프로젝트 4개와 기존 작업 7개의 상세 기여 |
 | `content/notes.json` | 보존된 마크다운 학습 문서의 제목, 순서, 경로 (홈페이지 미노출) |
 | `content/site.json` | 메뉴, 섹션 제목, 분류 메타데이터, 버튼 및 안내 문구 |
 
@@ -23,7 +23,9 @@
 
 프로젝트 안의 `caseStudies`는 상세 기여 목록입니다. 각 항목은 고유한 `id`, `title`, `summary`, `context`, `contributions`, `outcome`을 가집니다. 회사 경력은 `profile.experience`, 기타 경험은 `profile.otherExperience`, 교육·자격은 `profile.background`에서 관리합니다. 각 경력에는 고유한 `id`와 `projectIds` 배열을 지정합니다. `projectIds` 순서대로 해당 경력 바로 아래에 상세가 표시되며, 모든 프로젝트는 반드시 한 경력에만 연결되어야 합니다. 기존 `highlights` 데이터는 원문 요약으로 보존하되 화면에 중복 표시하지 않습니다. `resumeAsOf`는 이력서 기준 시점입니다.
 
-**경력** 섹션에서 아이디알시스템 아래에 라이프 체크·핀앳·씨젠·이커머스의 상세를 표시하고, 기타 활동의 We Bible 아래에 앱 개발 상세를 표시합니다. 별도의 프로젝트 목록·제목·필터는 없습니다. 기존 `#experience`, `#work`, 프로젝트별 주소는 유지합니다. NOTES 섹션은 제거했지만 학습 문서 원본과 뷰어는 보존합니다.
+**경력** 섹션에서 아이디알시스템 아래에 라이프 체크·핀앳·씨젠의 상세를 표시하고, 기타 활동의 We Bible 아래에 앱 개발 상세를 표시합니다. 별도의 프로젝트 목록·제목·필터는 없습니다. 기존 `#experience`, `#work`, 유지 중인 프로젝트별 주소는 보존합니다. NOTES 섹션은 제거했지만 학습 문서 원본과 뷰어는 보존합니다.
+
+프로젝트를 삭제할 때는 `projects.json` 항목과 `profile.json`의 해당 `projectIds`·`highlights` 연결을 함께 정리합니다. 의도적으로 삭제하거나 수정한 내용은 `tests/content.test.mjs`의 콘텐츠 보존 기준에도 반영합니다. 이후 `npm test` → `npm run build` 순서로 실행하고 갱신된 `index.html`을 함께 커밋해야 실제 사이트에 반영됩니다.
 
 ## 실행과 검증
 
