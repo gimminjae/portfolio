@@ -45,7 +45,7 @@ test('all navigation and preserved project anchors resolve in the generated page
     assert.ok(ids.includes(`project-${id}`), `Missing earlier project anchor: ${id}`);
   }
 });
-test('merges experience and projects, removes Notes, and renames education', () => {
+test('uses Experience as the only work section and retains earlier section edits', () => {
   const html = renderPage(content);
   assert.deepEqual(content.site.navigation.map(({ id }) => id), ['home', 'experience', 'skills', 'background', 'contact']);
   assert.ok(!html.includes('id="notes"'));
@@ -53,6 +53,10 @@ test('merges experience and projects, removes Notes, and renames education', () 
   assert.ok(!html.includes('<section id="work"'));
   const experience = html.slice(html.indexOf('<section id="experience"'), html.indexOf('<section id="skills"'));
   assert.ok(experience.includes('아이디알시스템'));
+  assert.ok(experience.includes('<h2>경력</h2>'));
+  assert.ok(!html.includes('ALL PROJECTS'));
+  assert.ok(!html.includes('project-filters'));
+  assert.ok(!html.includes('경력 및 프로젝트'));
   assert.ok(experience.includes('id="work"'));
   for (const project of content.projects) assert.ok(experience.includes(`id="project-${project.id}"`));
   assert.ok(html.includes('<h2>학력 및 자격증</h2>'));
@@ -92,13 +96,31 @@ test('rejects broken experience links and duplicate nested contribution IDs', ()
   const duplicate = structuredClone(content); duplicate.projects[1].caseStudies[0].id = duplicate.projects[0].id;
   assert.throws(() => validateContent(duplicate), /Duplicate project\/case/);
 });
-test('filter counts are derived from project membership', () => {
+test('renders every project once beneath its assigned employer or activity', () => {
   const html = renderPage(content);
-  for (const category of content.site.categories) {
-    const count = content.projects.filter((p) => category.id === 'all' || p.categories.includes(category.id)).length;
-    const button = html.match(new RegExp(`data-filter="${category.id}"[^>]*>(.*?)</button>`))[1];
-    assert.ok(button.includes(`<span>${count}</span>`));
-  }
+  const companyStart = html.indexOf('id="experience-idr-system"');
+  const activityStart = html.indexOf('id="experience-we-bible"');
+  const company = html.slice(companyStart, activityStart);
+  const activity = html.slice(activityStart, html.indexOf('<section id="skills"'));
+  for (const id of ['life-check', 'pinat', 'seegene', 'ecommerce']) assert.ok(company.includes(`id="project-${id}"`));
+  assert.ok(!company.includes('id="project-we-bible"'));
+  assert.ok(activity.includes('id="project-we-bible"'));
+  for (const project of content.projects) assert.equal(html.split(`id="project-${project.id}"`).length - 1, 1);
+  // Moving a contribution requires only changing the JSON relationship.
+  const moved = structuredClone(content);
+  moved.profile.experience[0].projectIds = moved.profile.experience[0].projectIds.filter((id) => id !== 'pinat');
+  moved.profile.otherExperience[0].projectIds.push('pinat');
+  validateContent(moved);
+  const next = renderPage(moved);
+  assert.ok(next.indexOf('id="project-pinat"') > next.indexOf('id="experience-we-bible"'));
+});
+test('rejects missing, duplicate and unknown experience project assignments', () => {
+  const missing = structuredClone(content); missing.profile.experience[0].projectIds.pop();
+  assert.throws(() => validateContent(missing), /Unassigned project/);
+  const duplicate = structuredClone(content); duplicate.profile.otherExperience[0].projectIds.push('pinat');
+  assert.throws(() => validateContent(duplicate), /Project assigned more than once/);
+  const unknown = structuredClone(content); unknown.profile.experience[0].projectIds.push('missing');
+  assert.throws(() => validateContent(unknown), /Unknown experience project/);
 });
 test('home page has complete content without JavaScript or remote libraries', () => {
   const html = renderPage(content);

@@ -5,7 +5,8 @@ import { renderPage } from '../src/render.js';
 const root = new URL('../', import.meta.url);
 const content = await loadContent(root);
 const styleVersion = createHash('sha256').update(await readFile(new URL('css/style.css', root))).digest('hex').slice(0, 12);
-const html = renderPage(content, { styleVersion }).replace(/[ \t]+$/gm, '');
+const scriptVersion = createHash('sha256').update(await readFile(new URL('src/main.js', root))).digest('hex').slice(0, 12);
+const html = renderPage(content, { styleVersion, scriptVersion }).replace(/[ \t]+$/gm, '');
 await rm(new URL('dist/', root), { recursive: true, force: true });
 await mkdir(new URL('dist/src/', root), { recursive: true });
 // Commit root output to preserve GitHub Pages' existing branch deployment.

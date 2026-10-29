@@ -66,6 +66,13 @@
           "period": "2023.08 — 2024.02",
           "projectId": "seegene"
         }
+      ],
+      "id": "idr-system",
+      "projectIds": [
+        "life-check",
+        "pinat",
+        "seegene",
+        "ecommerce"
       ]
     }
   ],
@@ -215,6 +222,10 @@
           "period": "",
           "projectId": "we-bible"
         }
+      ],
+      "id": "we-bible",
+      "projectIds": [
+        "we-bible"
       ]
     }
   ]

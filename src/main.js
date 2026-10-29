@@ -49,27 +49,11 @@ window.addEventListener('scroll', () => {
 }, { passive: true });
 window.addEventListener('resize', updateActiveSection);
 updateActiveSection();
-const filterGroup = document.querySelector('.project-filters');
 const projects = [...document.querySelectorAll('.project')];
-const filterStatus = document.querySelector('.filter-status');
-filterGroup.hidden = false;
-filterGroup.addEventListener('click', (event) => {
-  const button = event.target.closest('button[data-filter]');
-  if (!button) return;
-  let visible = 0;
-  projects.forEach((project) => {
-    project.hidden = button.dataset.filter !== 'all' && !project.dataset.categories.split(' ').includes(button.dataset.filter);
-    if (!project.hidden) visible += 1;
-  });
-  filterGroup.querySelectorAll('button').forEach((item) => item.setAttribute('aria-pressed', String(item === button)));
-  filterStatus.textContent = filterStatus.dataset.template.replace('{count}', String(visible));
-  updateActiveSection();
-});
 function revealLinkedProject() {
   const target = document.getElementById(window.location.hash.slice(1));
   const project = target?.closest('.project');
   if (!project) return;
-  filterGroup.querySelector('[data-filter="all"]').click();
   project.querySelector('details').open = true;
   target.scrollIntoView();
 }
@@ -82,15 +66,15 @@ copyButton.addEventListener('click', async () => {
   try { await navigator.clipboard.writeText(copyButton.dataset.copyEmail); status.textContent = copyButton.dataset.success; }
   catch { status.textContent = copyButton.dataset.error; }
 });
-// Print all projects, then restore the visitor's filters and open/closed state.
+// Print all contributions, then restore their open/closed state.
 let printState;
 function preparePrint() {
   if (printState) return;
-  printState = projects.map((project) => ({ project, hidden: project.hidden, open: project.querySelector('details').open }));
-  printState.forEach(({ project }) => { project.hidden = false; project.querySelector('details').open = true; });
+  printState = projects.map((project) => ({ project, open: project.querySelector('details').open }));
+  printState.forEach(({ project }) => { project.querySelector('details').open = true; });
 }
 function restorePrint() {
-  printState?.forEach(({ project, hidden, open }) => { project.hidden = hidden; project.querySelector('details').open = open; });
+  printState?.forEach(({ project, open }) => { project.querySelector('details').open = open; });
   printState = undefined;
 }
 window.addEventListener('beforeprint', preparePrint);

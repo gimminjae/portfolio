@@ -11,7 +11,7 @@
 | `content/profile.json` | 이름, 소개, 사진, 연락처, 경력, 기술, 교육·자격, 검색/공유 메타데이터 |
 | `content/projects.json` | 이력서 기준 서비스 프로젝트 5개와 기존 작업 8개의 상세 기여 |
 | `content/notes.json` | 보존된 마크다운 학습 문서의 제목, 순서, 경로 (홈페이지 미노출) |
-| `content/site.json` | 메뉴, 섹션 제목, 필터 이름, 버튼 및 안내 문구 |
+| `content/site.json` | 메뉴, 섹션 제목, 분류 메타데이터, 버튼 및 안내 문구 |
 
 1. 위 JSON 파일을 수정합니다.
 2. `npm test`와 `npm run build`를 실행합니다. 패키지 설치는 필요하지 않습니다(Node.js 22 이상).
@@ -19,11 +19,11 @@
 
 `index.html`은 자동 생성 파일입니다. 여기를 직접 수정하면 다음 빌드에서 덮어씁니다. JavaScript를 끈 브라우저도 본문과 기본 상세 펼치기를 읽을 수 있도록 정적 HTML을 생성합니다.
 
-프로젝트 추가 시 고유한 `id`, `title`, `summary`, `organization`, `categories`, `role`, `stack`, `kind`, `period`, `context`, `contributions`, `outcome`, `caseStudies`, `links`, `expanded`를 입력합니다. 분류 값은 `site.json`의 `categories`에 등록된 ID를 사용합니다. 필터 개수는 자동 계산됩니다. 관련 링크가 없다면 `links: []`로 두며, 존재하지 않는 URL을 만들지 않습니다. `expanded: true`이면 처음부터 펼칩니다.
+프로젝트 추가 시 고유한 `id`, `title`, `summary`, `organization`, `categories`, `role`, `stack`, `kind`, `period`, `context`, `contributions`, `outcome`, `caseStudies`, `links`, `expanded`를 입력합니다. 분류 값은 `site.json`의 `categories`에 등록된 ID를 사용합니다. 분류는 메타데이터로 보존하며 화면 필터는 사용하지 않습니다. 관련 링크가 없다면 `links: []`로 두며, 존재하지 않는 URL을 만들지 않습니다. `expanded: true`이면 처음부터 펼칩니다.
 
-프로젝트 안의 `caseStudies`는 상세 기여 목록입니다. 각 항목은 고유한 `id`, `title`, `summary`, `context`, `contributions`, `outcome`을 가집니다. 회사 경력은 `profile.experience`, 기타 경험은 `profile.otherExperience`, 교육·자격은 `profile.background`에서 관리합니다. 경력의 `highlights[].projectId`는 실제 프로젝트의 ID와 일치해야 합니다. `resumeAsOf`는 이력서 기준 시점입니다.
+프로젝트 안의 `caseStudies`는 상세 기여 목록입니다. 각 항목은 고유한 `id`, `title`, `summary`, `context`, `contributions`, `outcome`을 가집니다. 회사 경력은 `profile.experience`, 기타 경험은 `profile.otherExperience`, 교육·자격은 `profile.background`에서 관리합니다. 각 경력에는 고유한 `id`와 `projectIds` 배열을 지정합니다. `projectIds` 순서대로 해당 경력 바로 아래에 상세가 표시되며, 모든 프로젝트는 반드시 한 경력에만 연결되어야 합니다. 기존 `highlights` 데이터는 원문 요약으로 보존하되 화면에 중복 표시하지 않습니다. `resumeAsOf`는 이력서 기준 시점입니다.
 
-경력과 기타 활동의 요약, 프로젝트 필터와 상세는 하나의 **경력 및 프로젝트** 섹션으로 표시됩니다. 기존 `#experience`, `#work`, 프로젝트별 주소는 유지합니다. NOTES 섹션은 제거했지만 학습 문서 원본과 뷰어는 보존합니다.
+**경력** 섹션에서 아이디알시스템 아래에 라이프 체크·핀앳·씨젠·이커머스의 상세를 표시하고, 기타 활동의 We Bible 아래에 앱 개발 상세를 표시합니다. 별도의 프로젝트 목록·제목·필터는 없습니다. 기존 `#experience`, `#work`, 프로젝트별 주소는 유지합니다. NOTES 섹션은 제거했지만 학습 문서 원본과 뷰어는 보존합니다.
 
 ## 실행과 검증
 
@@ -42,7 +42,7 @@ npm run preview   # http://127.0.0.1:4173/portfolio/
 ```text
 content/                 # 편집할 콘텐츠의 원본 JSON
 src/render.js            # 콘텐츠를 HTML로 변환하는 화면 템플릿
-src/main.js              # 필터, 목차, 이메일 복사, 인쇄 상호작용
+src/main.js              # 목차, 상세 바로가기, 이메일 복사, 인쇄 상호작용
 css/style.css            # 반응형 화면 및 A4 인쇄 스타일
 scripts/content.mjs      # JSON 로딩과 오류 검증
 scripts/build.mjs        # 정적 사이트 생성
@@ -59,9 +59,9 @@ dist/                    # 별도 정적 호스팅용 출력 (Git 제외)
 
 ## GitHub Pages와 인쇄
 
-기존 `master` 루트의 `index.html`을 유지하므로 브랜치 기반 GitHub Pages 설정을 변경할 필요가 없습니다. 다른 정적 호스팅에서는 `dist/`를 배포하면 됩니다. 모든 내부 자산은 상대 경로로 연결되어 `/portfolio/` 하위 경로에서도 동작합니다.
+기존 `master` 루트의 `index.html`을 유지하므로 브랜치 기반 GitHub Pages 설정을 변경할 필요가 없습니다. 다른 정적 호스팅에서는 `dist/`를 배포하면 됩니다. 스타일과 스크립트 주소에는 파일 내용에서 계산한 버전을 붙여 배포 후 캐시를 갱신합니다. 모든 내부 자산은 상대 경로로 연결되어 `/portfolio/` 하위 경로에서도 동작합니다.
 
-화면의 **인쇄 / PDF**를 누르면 전체 프로젝트를 펼쳐 인쇄합니다. 인쇄 종료/취소 후에는 기존 필터 및 펼침 상태로 돌아옵니다. PDF 저장은 브라우저의 인쇄 창에서 선택합니다. 출력 결과는 브라우저·폰트·인쇄 설정에 따라 달라질 수 있습니다.
+화면의 **인쇄 / PDF**를 누르면 전체 프로젝트를 펼쳐 인쇄합니다. 인쇄 종료/취소 후에는 기존 펼침 상태로 돌아옵니다. PDF 저장은 브라우저의 인쇄 창에서 선택합니다. 출력 결과는 브라우저·폰트·인쇄 설정에 따라 달라질 수 있습니다.
 
 ## 참고자료 사용 범위
 

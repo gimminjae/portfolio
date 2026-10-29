@@ -9,8 +9,8 @@
     },
     {
       "id": "experience",
-      "label": "경력 및 프로젝트",
-      "en": "Experience & Projects"
+      "label": "경력",
+      "en": "Experience"
     },
     {
       "id": "skills",
@@ -30,9 +30,9 @@
   ],
   "sections": {
     "experience": {
-      "eyebrow": "01 / EXPERIENCE & PROJECTS",
-      "title": "경력 및 프로젝트",
-      "description": "서비스를 개발하고 운영하며 쌓은 경험과 프로젝트별 역할·기여를 소개합니다."
+      "eyebrow": "01 / EXPERIENCE",
+      "title": "경력",
+      "description": "회사와 활동별로 맡았던 역할과 구체적인 기여를 정리했습니다."
     },
     "skills": {
       "eyebrow": "02 / SKILLS",
@@ -88,7 +88,6 @@
     "closeMenu": "메뉴 닫기",
     "openMenu": "메뉴 열기",
     "heroEyebrow": "BUILD. CONNECT. IMPROVE.",
-    "projectsCta": "프로젝트 살펴보기",
     "contactCta": "연락하기",
     "about": "ABOUT ME",
     "role": "역할",
@@ -97,9 +96,6 @@
     "contributions": "주요 기여",
     "outcome": "결과",
     "details": "기여 내용",
-    "filters": "프로젝트 분류",
-    "count": "개의 프로젝트",
-    "filteredCount": "{count}개의 프로젝트를 표시합니다.",
     "email": "이메일",
     "phone": "전화",
     "copy": "이메일 복사",
@@ -107,7 +103,6 @@
     "copyError": "복사하지 못했습니다. 이메일 주소를 직접 선택해 주세요.",
     "toTop": "맨 위로",
     "footer": "© Minjae Kim. All rights reserved.",
-    "allProjects": "ALL PROJECTS",
     "profileLinks": "프로필 링크",
     "projectLinks": "관련 링크",
     "workExperience": "WORK EXPERIENCE",
@@ -117,6 +112,6 @@
     "careerStart": "개발 시작",
     "period": "참여 기간",
     "resumeEdition": "RESUME /",
-    "projectDetail": "프로젝트 보기"
+    "experienceCta": "경력 살펴보기"
   }
 }

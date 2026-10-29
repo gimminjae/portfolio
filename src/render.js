@@ -9,33 +9,30 @@ const chips = (items) => items.map((item) => `<li>${e(item)}</li>`).join('');
 function heading(s) {
   return `<header class="section-heading"><p class="eyebrow">${e(s.eyebrow)}</p><h2>${e(s.title)}</h2>${s.description ? `<p class="section-description">${e(s.description)}</p>` : ''}</header>`;
 }
-function experienceView(job, label, labels) {
-  return `<article class="experience-row"><p class="experience-group-label">${e(label)}</p><div class="experience-date"><span class="timeline-dot"></span>${e(job.period)}</div><h3>${e(job.organization)}</h3><p class="job-role">${e(job.role)}</p><p class="job-description">${e(job.description)}</p><ul class="experience-highlights">${job.highlights.map((item) => `<li><a href="#project-${e(item.projectId)}">${e(item.title)} ${arrow}<span class="sr-only"> ${e(labels.projectDetail)}</span></a></li>`).join('')}</ul></article>`;
+function experienceView(job, label, projectsById, site) {
+  return `<section class="experience-entry" id="experience-${e(job.id)}" aria-labelledby="experience-title-${e(job.id)}"><header class="experience-row"><p class="experience-group-label">${e(label)}</p><div class="experience-date"><span class="timeline-dot"></span>${e(job.period)}</div><h3 id="experience-title-${e(job.id)}">${e(job.organization)}</h3><p class="job-role">${e(job.role)}</p><p class="job-description">${e(job.description)}</p></header><div class="experience-projects">${job.projectIds.map((id, i) => projectView(projectsById.get(id), i, site)).join('')}</div></section>`;
 }
 function projectView(p, index, site) {
   const l = site.labels;
-  return `<article class="project" id="project-${e(p.id)}" data-categories="${e(p.categories.join(' '))}">
+  return `<article class="project" id="project-${e(p.id)}">
   <details${p.expanded ? ' open' : ''}><summary>
     <span class="project-index">${String(index + 1).padStart(2, '0')}</span>
-    <div class="project-intro"><span class="project-meta"><span class="project-kind">${e(p.kind)}</span><span class="project-period">${e(p.period)}</span></span><h3>${e(p.title)}</h3><span class="project-summary">${e(p.summary)}</span><span class="project-organization">${e(p.organization)}${p.caseStudies.length ? ` · ${p.caseStudies.length}${e(l.caseStudyCount)}` : ''}</span></div>
+    <div class="project-intro"><span class="project-meta"><span class="project-kind">${e(p.kind)}</span><span class="project-period">${e(p.period)}</span></span><h4 class="project-title">${e(p.title)}</h4><span class="project-summary">${e(p.summary)}</span><span class="project-organization">${e(p.organization)}${p.caseStudies.length ? ` · ${p.caseStudies.length}${e(l.caseStudyCount)}` : ''}</span></div>
     <span class="expand-icon" aria-hidden="true"></span><span class="sr-only">${e(l.details)}</span>
   </summary><div class="project-body">
     <dl class="project-facts"><div><dt>${e(l.role)}</dt><dd>${e(p.role)}</dd></div><div><dt>${e(l.period)}</dt><dd>${e(p.period)}</dd></div></dl>
-    <div class="project-story"><div><h4>${e(l.context)}</h4><p>${e(p.context)}</p></div><div><h4>${e(l.contributions)}</h4><ul class="bullet-list">${p.contributions.map((item) => `<li>${e(item)}</li>`).join('')}</ul></div></div>
+    <div class="project-story"><div><h5>${e(l.context)}</h5><p>${e(p.context)}</p></div><div><h5>${e(l.contributions)}</h5><ul class="bullet-list">${p.contributions.map((item) => `<li>${e(item)}</li>`).join('')}</ul></div></div>
     ${p.metric ? `<div class="project-metric"><strong>${e(p.metric.value)}</strong><span>${e(p.metric.label)}</span></div>` : ''}
     <div class="project-outcome"><span>${e(l.outcome)}</span><p>${e(p.outcome)}</p></div>
-    ${p.caseStudies.length ? `<div class="case-studies"><h4 class="case-studies-label">${e(l.caseStudies)}</h4>${p.caseStudies.map((item, i) => `<section class="case-study" id="project-${e(item.id)}"><h5><span>${String(i + 1).padStart(2, '0')}</span>${e(item.title)}</h5><p>${e(item.summary)}</p><ul class="bullet-list">${item.contributions.map((text) => `<li>${e(text)}</li>`).join('')}</ul><p class="case-outcome"><span>${e(l.outcome)}</span>${e(item.outcome)}</p></section>`).join('')}</div>` : ''}
-    ${p.stack.length ? `<div class="project-stack"><h4>${e(l.stack)}</h4><ul class="tags">${chips(p.stack)}</ul></div>` : ''}
+    ${p.caseStudies.length ? `<div class="case-studies"><h5 class="case-studies-label">${e(l.caseStudies)}</h5>${p.caseStudies.map((item, i) => `<section class="case-study" id="project-${e(item.id)}"><h6><span>${String(i + 1).padStart(2, '0')}</span>${e(item.title)}</h6><p>${e(item.summary)}</p><ul class="bullet-list">${item.contributions.map((text) => `<li>${e(text)}</li>`).join('')}</ul><p class="case-outcome"><span>${e(l.outcome)}</span>${e(item.outcome)}</p></section>`).join('')}</div>` : ''}
+    ${p.stack.length ? `<div class="project-stack"><h5>${e(l.stack)}</h5><ul class="tags">${chips(p.stack)}</ul></div>` : ''}
     ${p.links.length ? `<nav class="project-links" aria-label="${e(l.projectLinks)}">${p.links.map((link) => external(link)).join('')}</nav>` : ''}
   </div></details></article>`;
 }
-export function renderPage({ profile: p, projects, site: s }, { styleVersion = '' } = {}) {
+export function renderPage({ profile: p, projects, site: s }, { styleVersion = '', scriptVersion = '' } = {}) {
   const l = s.labels;
   const nav = s.navigation.map((item, i) => `<a href="#${e(item.id)}"${i === 0 ? ' aria-current="location"' : ''}><span class="nav-number">${String(i).padStart(2, '0')}</span><span>${e(item.label)}</span></a>`).join('');
-  const filters = s.categories.map((category) => {
-    const count = projects.filter((p) => category.id === 'all' || p.categories.includes(category.id)).length;
-    return `<button type="button" data-filter="${e(category.id)}" aria-pressed="${category.id === 'all'}">${e(category.label)} <span>${count}</span></button>`;
-  }).join('');
+  const projectsById = new Map(projects.map((project) => [project.id, project]));
   return `<!DOCTYPE html>
 <!-- Generated by npm run build from content/*.json and src/render.js. Do not edit directly. -->
 <html lang="ko"><head>
@@ -43,7 +40,7 @@ export function renderPage({ profile: p, projects, site: s }, { styleVersion = '
 <title>${e(p.meta.title)}</title><meta name="description" content="${e(p.meta.description)}"><meta name="author" content="${e(p.name)}">
 <meta name="color-scheme" content="light"><meta name="theme-color" content="#fafaf8"><link rel="canonical" href="${e(p.meta.url)}">
 <meta property="og:type" content="website"><meta property="og:title" content="${e(p.meta.title)}"><meta property="og:description" content="${e(p.meta.description)}"><meta property="og:url" content="${e(p.meta.url)}"><meta property="og:image" content="${e(new URL(p.meta.image, p.meta.url).href)}">
-<link rel="icon" href="images/favicon.ico"><link rel="stylesheet" href="css/style.css${styleVersion ? `?v=${e(styleVersion)}` : ''}"><script type="module" src="src/main.js"></script>
+<link rel="icon" href="images/favicon.ico"><link rel="stylesheet" href="css/style.css${styleVersion ? `?v=${e(styleVersion)}` : ''}"><script type="module" src="src/main.js${scriptVersion ? `?v=${e(scriptVersion)}` : ''}"></script>
 </head><body>
 <a class="skip-link" href="#main">${e(l.skip)}</a>
 <header class="topbar"><div class="topbar-inner"><a class="brand" href="#home" aria-label="${e(p.englishName)}"><span>${e(p.monogram)}<i>.</i></span><span class="brand-caption">${e(s.brandLabel)}</span></a><div class="topbar-actions">${external(p.links[0], 'header-github')}<button class="print-button" type="button" data-print hidden><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M7 8V3h10v5M7 17H4V9h16v8h-3M7 14h10v7H7z"/></svg>${e(l.print)}</button><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="section-nav" data-open-label="${e(l.openMenu)}" data-close-label="${e(l.closeMenu)}" hidden>${e(l.openMenu)}</button></div></div></header>
@@ -52,10 +49,9 @@ export function renderPage({ profile: p, projects, site: s }, { styleVersion = '
 <section id="home" class="hero" aria-labelledby="profile-name"><div class="hero-topline"><p class="eyebrow">${e(l.heroEyebrow)}</p><span class="hero-folio">${e(l.resumeEdition)} ${e(p.resumeAsOf)}</span></div>
 <div class="identity"><div><h1 id="profile-name">${e(p.name)}<span class="name-dot">.</span></h1><p class="english-name">${e(p.englishName)}</p></div><img class="portrait" src="${e(p.photo.src)}" alt="${e(p.photo.alt)}" width="112" height="112"></div>
 <p class="role">${e(p.role)}<span class="career-start">${e(l.careerStart)} ${e(p.careerStart)}</span></p><h2 class="hero-title">${p.headline.map((line) => `<span>${e(line)}</span>`).join('')}</h2><p class="hero-description">${e(p.intro)}</p>
-<div class="hero-actions"><a class="primary-link" href="#work">${e(l.projectsCta)} <span aria-hidden="true">↓</span></a><a class="text-link" href="mailto:${e(p.email)}">${e(l.contactCta)} ${arrow}</a></div>
+<div class="hero-actions"><a class="primary-link" href="#experience">${e(l.experienceCta)} <span aria-hidden="true">↓</span></a><a class="text-link" href="mailto:${e(p.email)}">${e(l.contactCta)} ${arrow}</a></div>
 <dl class="focus-strip">${p.focus.map((item) => `<div><dt>${e(item.label)}</dt><dd>${e(item.value)}</dd></div>`).join('')}</dl><div id="about" class="about-note"><p class="eyebrow">${e(l.about)}</p><p>${e(p.about)}</p></div><div class="principles">${p.principles.map((item) => `<div><h3>${e(item.title)}</h3><p>${e(item.description)}</p></div>`).join('')}</div></section>
-<section id="experience" class="content-section">${heading(s.sections.experience)}<div class="experience-overview">${p.experience.map((job) => experienceView(job, l.workExperience, l)).join('')}${p.otherExperience.map((job) => experienceView(job, l.otherExperience, l)).join('')}</div>
-<div id="work"><div class="project-toolbar"><p>${e(l.allProjects)} <span>${String(projects.length).padStart(2, '0')}</span></p><p class="filter-status" role="status" aria-live="polite" data-template="${e(l.filteredCount)}">${projects.length}${e(l.count)}</p></div><div class="project-filters" role="group" aria-label="${e(l.filters)}" hidden>${filters}</div><div class="project-list">${projects.map((p, i) => projectView(p, i, s)).join('')}</div></div></section>
+<section id="experience" class="content-section"><span id="work" aria-hidden="true"></span>${heading(s.sections.experience)}<div class="experience-list">${p.experience.map((job) => experienceView(job, l.workExperience, projectsById, s)).join('')}${p.otherExperience.map((job) => experienceView(job, l.otherExperience, projectsById, s)).join('')}</div></section>
 <section id="skills" class="content-section">${heading(s.sections.skills)}<div class="skill-list">${p.skills.map((skill, i) => `<div class="skill-row"><div><span class="skill-index">0${i + 1}</span><h3>${e(skill.name)}</h3><p>${e(skill.description)}</p></div><ul class="tags">${chips(skill.items)}</ul></div>`).join('')}</div></section>
 <section id="background" class="content-section">${heading(s.sections.background)}<div class="background-list">${p.background.map((item) => `<div class="background-row"><span>${e(item.kind)}</span><div><h3>${e(item.title)}</h3>${item.description ? `<p class="background-description">${e(item.description)}</p>` : ''}</div><p>${e(item.detail)}</p></div>`).join('')}</div></section>
 <section id="contact" class="contact-section">${heading(s.sections.contact)}<a class="contact-email" href="mailto:${e(p.email)}">${e(p.email)} ${arrow}</a><div class="contact-details"><a href="tel:${e(p.phone.replaceAll('-', ''))}"><span>${e(l.phone)}</span>${e(p.phone)}</a><button type="button" class="copy-button" data-copy-email="${e(p.email)}" data-success="${e(l.copied)}" data-error="${e(l.copyError)}" hidden>${e(l.copy)} <span aria-hidden="true">⧉</span></button></div><p class="copy-status" role="status" aria-live="polite"></p><nav class="social-links" aria-label="${e(l.profileLinks)}">${p.links.map((link) => external(link)).join('')}</nav></section>

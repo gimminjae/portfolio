@@ -26,10 +26,20 @@ export function validateContent({ profile, projects, notes, site }) {
   uniqueIds(projects, 'project'); uniqueIds(site.categories, 'category'); uniqueIds(site.navigation, 'navigation');
   uniqueIds([...projects, ...projects.flatMap((project) => project.caseStudies)], 'project/case');
   const projectIds = new Set(projects.map((project) => project.id));
-  for (const job of [...profile.experience, ...profile.otherExperience]) {
+  const experiences = [...profile.experience, ...profile.otherExperience];
+  uniqueIds(experiences, 'experience');
+  const assignedProjects = new Set();
+  for (const job of experiences) {
+    if (!Array.isArray(job.projectIds)) throw new Error(`Missing experience projectIds: ${job.id}`);
+    for (const id of job.projectIds) {
+      if (!projectIds.has(id)) throw new Error(`Unknown experience project: ${id}`);
+      if (assignedProjects.has(id)) throw new Error(`Project assigned more than once: ${id}`);
+      assignedProjects.add(id);
+    }
     ['organization', 'role', 'period', 'description'].forEach((key) => required(job[key], `experience.${key}`));
     for (const item of job.highlights) if (!projectIds.has(item.projectId)) throw new Error(`Unknown experience project: ${item.projectId}`);
   }
+  for (const id of projectIds) if (!assignedProjects.has(id)) throw new Error(`Unassigned project: ${id}`);
   const categories = new Set(site.categories.map((category) => category.id));
   if (!categories.has('all')) throw new Error('Missing all category');
   projects.forEach((project) => {
