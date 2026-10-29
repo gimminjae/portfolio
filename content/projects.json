@@ -1,0 +1,182 @@
+[
+  {
+    "id": "life-check-ui",
+    "title": "라이프 체크 FO UI 리뉴얼",
+    "summary": "검진기관/검진프로그램 비교 및 금액 비교 기능 구현으로 사용자 선택 경험 개선",
+    "organization": "아이디알시스템",
+    "categories": [
+      "front-end",
+      "life-check",
+      "performance"
+    ],
+    "role": "프론트엔드 개발",
+    "stack": [],
+    "context": "검진기관, 검진프로그램, 금액을 비교하는 사용자 선택 경험을 개선하는 작업입니다.",
+    "contributions": [
+      "검진기관 및 검진프로그램 비교 기능 구현",
+      "금액 비교 기능 구현"
+    ],
+    "outcome": "검진기관과 프로그램을 선택하는 사용자 경험 개선",
+    "links": [],
+    "expanded": true
+  },
+  {
+    "id": "capa",
+    "title": "검진기관 CAPA 설정 기능",
+    "summary": "Kotlin/Spring 기반 예약 수용량 관리 백엔드 개발 및 유지보수",
+    "organization": "아이디알시스템",
+    "categories": [
+      "back-end",
+      "life-check"
+    ],
+    "role": "백엔드 개발",
+    "stack": [
+      "Kotlin",
+      "Spring"
+    ],
+    "context": "검진기관의 예약 수용량을 설정하고 관리하는 백엔드 기능입니다.",
+    "contributions": [
+      "Kotlin/Spring 기반 예약 수용량 관리 기능 개발",
+      "예약 수용량 정책 유지보수 및 운영 고도화"
+    ],
+    "outcome": "검진기관 예약 수용량 관리 및 운영 고도화",
+    "links": [],
+    "expanded": false
+  },
+  {
+    "id": "architecture",
+    "title": "MSA & Hexagonal 아키텍처 도입",
+    "summary": "도메인 중심 구조 전환으로 유지보수성/확장성 향상",
+    "organization": "아이디알시스템",
+    "categories": [
+      "back-end",
+      "architecture",
+      "life-check"
+    ],
+    "role": "아키텍처 개선",
+    "stack": [
+      "MSA",
+      "Hexagonal"
+    ],
+    "context": "도메인 중심의 구조로 전환해 유지보수성과 확장성을 개선하는 작업입니다.",
+    "contributions": [
+      "도메인 분리 및 MSA 아키텍처 도입",
+      "Hexagonal 아키텍처를 적용한 구조 개선"
+    ],
+    "outcome": "유지보수성 및 확장성 향상",
+    "links": [],
+    "expanded": false
+  },
+  {
+    "id": "frontend-shared",
+    "title": "프론트엔드 공통화",
+    "summary": "React 컴포넌트/유틸 공통화로 개발 생산성 향상",
+    "organization": "아이디알시스템",
+    "categories": [
+      "front-end",
+      "life-check"
+    ],
+    "role": "프론트엔드 개발",
+    "stack": [
+      "React"
+    ],
+    "context": "프론트엔드에서 반복되는 컴포넌트와 유틸 함수를 공통화하는 작업입니다.",
+    "contributions": [
+      "React 공통 컴포넌트 정리",
+      "유틸 함수 공통화"
+    ],
+    "outcome": "팀의 개발 생산성 향상",
+    "links": [],
+    "expanded": false
+  },
+  {
+    "id": "api-performance",
+    "title": "고부하 API 성능 개선",
+    "summary": "DB 병목 구간을 개선해 서비스 응답 성능 및 사용자 경험 개선",
+    "organization": "아이디알시스템",
+    "categories": [
+      "back-end",
+      "performance"
+    ],
+    "role": "백엔드 성능 개선",
+    "stack": [
+      "DB"
+    ],
+    "context": "고부하 API에서 DB 병목 구간을 개선하는 작업입니다.",
+    "contributions": [
+      "DB 병목 구간 개선"
+    ],
+    "outcome": "서비스 응답 성능 및 사용자 경험 개선",
+    "links": [],
+    "expanded": false
+  },
+  {
+    "id": "reservation-network",
+    "title": "예약 프로세스 네트워크 이슈 해결",
+    "summary": "일부 사용자에서만 발생하던 장애 원인 분석 및 해결",
+    "organization": "아이디알시스템",
+    "categories": [
+      "operations",
+      "life-check"
+    ],
+    "role": "서비스 운영 · 이슈 대응",
+    "stack": [],
+    "context": "예약 과정에서 일부 사용자에게만 발생하던 네트워크 장애를 다뤘습니다.",
+    "contributions": [
+      "특정 사용자에게 발생하는 네트워크 장애 원인 분석",
+      "예약 프로세스 이슈 해결"
+    ],
+    "outcome": "일부 사용자에서만 발생하던 장애 해결",
+    "links": [],
+    "expanded": false
+  },
+  {
+    "id": "pinat",
+    "title": "핀앳 페이지 렌더링 80% 개선",
+    "summary": "API 통합, 무한 스크롤, 페이징 적용으로 저성능 페이지 최적화",
+    "organization": "아이디알시스템",
+    "categories": [
+      "front-end",
+      "pinat",
+      "performance"
+    ],
+    "role": "프론트엔드 성능 개선",
+    "stack": [
+      "API",
+      "무한 스크롤",
+      "페이징"
+    ],
+    "context": "렌더링 성능이 낮은 핀앳 페이지를 최적화하는 작업입니다.",
+    "contributions": [
+      "API 통합",
+      "무한 스크롤 및 페이징 적용"
+    ],
+    "outcome": "페이지 렌더링 80% 개선",
+    "links": [],
+    "expanded": false
+  },
+  {
+    "id": "backoffice",
+    "title": "백오피스 React 마이그레이션",
+    "summary": "Thymeleaf 기반 화면을 React.js로 전환하고 SonarQube 기반 품질 개선",
+    "organization": "멋쟁이사자처럼",
+    "categories": [
+      "operations",
+      "backoffice"
+    ],
+    "role": "프론트엔드 전환 · 품질 개선",
+    "stack": [
+      "React.js",
+      "Thymeleaf",
+      "SonarQube"
+    ],
+    "context": "Thymeleaf 기반 전자상거래 백오피스를 React.js로 전환하는 작업입니다.",
+    "contributions": [
+      "Thymeleaf 화면을 React.js로 마이그레이션",
+      "SonarQube 규칙 기반 코드 품질 개선"
+    ],
+    "outcome": "React.js 기반 화면 전환 및 코드 품질 개선",
+    "links": [],
+    "expanded": false
+  }
+]

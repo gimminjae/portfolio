@@ -1,0 +1,143 @@
+{
+  "brandLabel": "Developer portfolio",
+  "edition": "경험을 연결하고, 개선을 쌓아갑니다.",
+  "navigation": [
+    {
+      "id": "home",
+      "label": "소개",
+      "en": "Introduction"
+    },
+    {
+      "id": "experience",
+      "label": "경력",
+      "en": "Experience"
+    },
+    {
+      "id": "work",
+      "label": "프로젝트",
+      "en": "Projects"
+    },
+    {
+      "id": "skills",
+      "label": "기술",
+      "en": "Skills"
+    },
+    {
+      "id": "notes",
+      "label": "기록",
+      "en": "Notes"
+    },
+    {
+      "id": "background",
+      "label": "교육 · 자격",
+      "en": "Background"
+    },
+    {
+      "id": "contact",
+      "label": "연락",
+      "en": "Contact"
+    }
+  ],
+  "sections": {
+    "experience": {
+      "eyebrow": "01 / EXPERIENCE",
+      "title": "실무에서 쌓아온 경험",
+      "description": "백엔드에서 시작해 프론트엔드와 서비스 운영까지."
+    },
+    "work": {
+      "eyebrow": "02 / PROJECTS",
+      "title": "문제를 마주하고, 개선하다.",
+      "description": "사용자 경험, 서비스 구조, 운영 안정성을 고민한 프로젝트들입니다."
+    },
+    "skills": {
+      "eyebrow": "03 / SKILLS",
+      "title": "아이디어를 구현하는 기술",
+      "description": "백엔드에서 프론트엔드, 운영과 성능 개선까지 서비스 개발 전반을 다룹니다."
+    },
+    "notes": {
+      "eyebrow": "04 / NOTES",
+      "title": "배운 것을 나의 언어로",
+      "description": "컴퓨터구조와 프로그래밍을 읽고 정리한 학습 기록입니다."
+    },
+    "background": {
+      "eyebrow": "05 / BACKGROUND",
+      "title": "배움의 발자취",
+      "description": ""
+    },
+    "contact": {
+      "eyebrow": "06 / CONTACT",
+      "title": "함께 만들 이야기가 있다면.",
+      "description": "새로운 연결을 기다립니다. 편하게 연락 주세요."
+    }
+  },
+  "categories": [
+    {
+      "id": "all",
+      "label": "전체"
+    },
+    {
+      "id": "front-end",
+      "label": "Front-end"
+    },
+    {
+      "id": "back-end",
+      "label": "Back-end"
+    },
+    {
+      "id": "operations",
+      "label": "Operations"
+    },
+    {
+      "id": "life-check",
+      "label": "라이프 체크"
+    },
+    {
+      "id": "pinat",
+      "label": "핀앳"
+    },
+    {
+      "id": "backoffice",
+      "label": "백오피스"
+    },
+    {
+      "id": "architecture",
+      "label": "아키텍처"
+    },
+    {
+      "id": "performance",
+      "label": "성능 개선"
+    }
+  ],
+  "labels": {
+    "skip": "본문으로 바로가기",
+    "navigation": "목차",
+    "menu": "메뉴",
+    "print": "인쇄 / PDF",
+    "closeMenu": "메뉴 닫기",
+    "openMenu": "메뉴 열기",
+    "heroEyebrow": "BUILD. CONNECT. IMPROVE.",
+    "projectsCta": "프로젝트 살펴보기",
+    "contactCta": "연락하기",
+    "about": "ABOUT ME",
+    "role": "역할",
+    "stack": "사용 기술",
+    "context": "개요",
+    "contributions": "주요 기여",
+    "outcome": "결과",
+    "details": "기여 내용",
+    "filters": "프로젝트 분류",
+    "count": "개의 프로젝트",
+    "filteredCount": "{count}개의 프로젝트를 표시합니다.",
+    "email": "이메일",
+    "phone": "전화",
+    "copy": "이메일 복사",
+    "copied": "이메일 주소를 복사했습니다.",
+    "copyError": "복사하지 못했습니다. 이메일 주소를 직접 선택해 주세요.",
+    "toTop": "맨 위로",
+    "footer": "© Minjae Kim. All rights reserved.",
+    "notesLink": "기록 읽기",
+    "allProjects": "ALL PROJECTS",
+    "profileLinks": "프로필 링크",
+    "projectLinks": "관련 링크"
+  }
+}

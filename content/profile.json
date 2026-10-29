@@ -1,0 +1,178 @@
+{
+  "meta": {
+    "title": "김민재 | Junior Full-Stack Software Engineer",
+    "description": "김민재 주니어 풀스택 개발자 포트폴리오 - Java/Kotlin Spring 백엔드와 React/Next.js 프론트엔드 개발 경험",
+    "url": "https://gimminjae.github.io/portfolio/",
+    "image": "images/og.webp"
+  },
+  "name": "김민재",
+  "englishName": "Minjae Kim",
+  "monogram": "MK",
+  "role": "Junior Full-Stack Software Engineer",
+  "headline": [
+    "서비스의 흐름을 이해하고,",
+    "더 나은 경험을 만듭니다."
+  ],
+  "intro": "Java/Kotlin Spring 백엔드와 React/Next.js 프론트엔드를 다루는 풀스택 개발자입니다. 재사용성과 확장성을 고민하며, 실제 사용자 경험을 개선하는 데 집중합니다.",
+  "about": "2021년 12월부터 자바 백엔드 개발자로 커리어를 시작해, 현재는 Kotlin/Spring 기반 백엔드와 React/Next.js 기반 프론트엔드를 함께 개발하고 있습니다. 기능 구현뿐 아니라 운영 이슈 대응, 성능 개선, 아키텍처 도입(MSA/Hexagonal)까지 폭넓게 경험했습니다.",
+  "photo": {
+    "src": "images/portfolio.png",
+    "alt": "김민재 프로필 사진"
+  },
+  "email": "min356812@naver.com",
+  "phone": "010-2952-5866",
+  "links": [
+    {
+      "label": "GitHub",
+      "url": "https://github.com/gimminjae"
+    },
+    {
+      "label": "LinkedIn",
+      "url": "https://www.linkedin.com/in/minjae-kim-73431b25a/"
+    }
+  ],
+  "focus": [
+    {
+      "label": "Back-end",
+      "value": "Kotlin · Java · Spring Boot"
+    },
+    {
+      "label": "Front-end",
+      "value": "React · Next.js · TypeScript"
+    },
+    {
+      "label": "Architecture",
+      "value": "MSA · Hexagonal"
+    }
+  ],
+  "experience": [
+    {
+      "organization": "아이디알시스템",
+      "role": "Junior Full-Stack Software Engineer",
+      "period": "2022.12 — Present",
+      "highlights": [
+        {
+          "title": "라이프 체크 FO UI 리뉴얼",
+          "description": "검진기관/검진프로그램 비교 및 금액 비교 UX 개선"
+        },
+        {
+          "title": "검진기관 CAPA 관리",
+          "description": "Kotlin/Spring 예약 수용량 정책 개발 및 운영 고도화"
+        },
+        {
+          "title": "MSA & Hexagonal 전환",
+          "description": "도메인 분리와 아키텍처 개선으로 유지보수성 향상"
+        },
+        {
+          "title": "예약 프로세스 이슈 대응",
+          "description": "특정 사용자 네트워크 장애 원인 분석 및 해결"
+        }
+      ]
+    },
+    {
+      "organization": "멋쟁이사자처럼 백엔드스쿨 KDT",
+      "role": "백엔드 개발 교육 · 프로젝트",
+      "period": "2022.06 — 2022.11",
+      "highlights": [
+        {
+          "title": "전자상거래 백오피스 React 전환",
+          "description": "Thymeleaf 화면을 React 기반으로 마이그레이션"
+        },
+        {
+          "title": "품질 개선 체계 적용",
+          "description": "SonarQube 규칙 기반 코드 품질 개선 경험 축적"
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "name": "Back-end",
+      "description": "도메인과 데이터 흐름을 고려한 서버 개발",
+      "items": [
+        "Kotlin",
+        "Java",
+        "Spring Boot",
+        "JPA",
+        "MyBatis",
+        "MySQL",
+        "PostgreSQL"
+      ]
+    },
+    {
+      "name": "Front-end",
+      "description": "재사용 가능한 구조와 사용자 경험 개선",
+      "items": [
+        "React.js",
+        "Next.js",
+        "JavaScript",
+        "TypeScript",
+        "Redux",
+        "Tailwind CSS",
+        "Formik"
+      ]
+    },
+    {
+      "name": "Architecture & Tools",
+      "description": "구조 개선부터 협업, 배포, 코드 품질까지",
+      "items": [
+        "MSA",
+        "Hexagonal Architecture",
+        "IntelliJ",
+        "VSCode",
+        "Cursor",
+        "GitLab",
+        "AWS CodeCommit",
+        "DBeaver",
+        "ERDCloud",
+        "ArgoCD",
+        "SonarQube",
+        "Axios",
+        "ESLint"
+      ]
+    }
+  ],
+  "background": [
+    {
+      "kind": "Certification",
+      "title": "SQLD",
+      "detail": "2021.11"
+    },
+    {
+      "kind": "Education",
+      "title": "멋쟁이사자처럼 백엔드스쿨 KDT",
+      "detail": "2022.06 — 2022.11"
+    },
+    {
+      "kind": "Education",
+      "title": "경기대학교 행정학과",
+      "detail": "중퇴"
+    }
+  ],
+  "legacySelfAssessment": [
+    {
+      "skill": "Java / Kotlin",
+      "percent": 90
+    },
+    {
+      "skill": "Spring Boot / JPA",
+      "percent": 88
+    },
+    {
+      "skill": "React.js / Next.js",
+      "percent": 85
+    },
+    {
+      "skill": "JavaScript / TypeScript",
+      "percent": 85
+    },
+    {
+      "skill": "MySQL / PostgreSQL",
+      "percent": 82
+    },
+    {
+      "skill": "MSA / Hexagonal Architecture",
+      "percent": 75
+    }
+  ]
+}
