@@ -24,13 +24,23 @@ export function validateContent({ profile, projects, notes, site }) {
   if (!profile.links.length) throw new Error('Add a profile link');
   profile.links.forEach(safeLink);
   uniqueIds(projects, 'project'); uniqueIds(site.categories, 'category'); uniqueIds(site.navigation, 'navigation');
+  uniqueIds([...projects, ...projects.flatMap((project) => project.caseStudies)], 'project/case');
+  const projectIds = new Set(projects.map((project) => project.id));
+  for (const job of [...profile.experience, ...profile.otherExperience]) {
+    ['organization', 'role', 'period', 'description'].forEach((key) => required(job[key], `experience.${key}`));
+    for (const item of job.highlights) if (!projectIds.has(item.projectId)) throw new Error(`Unknown experience project: ${item.projectId}`);
+  }
   const categories = new Set(site.categories.map((category) => category.id));
   if (!categories.has('all')) throw new Error('Missing all category');
   projects.forEach((project) => {
-    ['title', 'summary', 'organization', 'role', 'context', 'outcome'].forEach((key) => required(project[key], `${project.id}.${key}`));
+    ['title', 'summary', 'organization', 'kind', 'period', 'role', 'context', 'outcome'].forEach((key) => required(project[key], `${project.id}.${key}`));
     if (!project.categories.length || project.categories.some((category) => !categories.has(category) || category === 'all')) throw new Error(`Unknown category in ${project.id}`);
     if (!Array.isArray(project.stack) || !project.contributions.length) throw new Error(`Missing project details: ${project.id}`);
     project.links.forEach(safeLink);
+    project.caseStudies.forEach((item) => {
+      ['title', 'summary', 'outcome'].forEach((key) => required(item[key], `${item.id}.${key}`));
+      if (!item.contributions.length) throw new Error(`Missing case contributions: ${item.id}`);
+    });
   });
   notes.forEach((note) => { required(note.title, 'note.title'); if (!note.path.startsWith('articles/') || !note.path.endsWith('.md')) throw new Error(`Invalid article path: ${note.path}`); });
   Object.entries(site.labels).forEach(([key, value]) => required(value, `labels.${key}`));

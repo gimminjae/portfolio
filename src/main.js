@@ -66,11 +66,12 @@ filterGroup.addEventListener('click', (event) => {
   updateActiveSection();
 });
 function revealLinkedProject() {
-  const project = document.getElementById(window.location.hash.slice(1));
-  if (!project?.classList.contains('project')) return;
+  const target = document.getElementById(window.location.hash.slice(1));
+  const project = target?.closest('.project');
+  if (!project) return;
   filterGroup.querySelector('[data-filter="all"]').click();
   project.querySelector('details').open = true;
-  project.scrollIntoView();
+  target.scrollIntoView();
 }
 window.addEventListener('hashchange', revealLinkedProject);
 revealLinkedProject();

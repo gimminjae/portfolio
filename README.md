@@ -9,7 +9,7 @@
 | 파일 | 관리하는 내용 |
 | --- | --- |
 | `content/profile.json` | 이름, 소개, 사진, 연락처, 경력, 기술, 교육·자격, 검색/공유 메타데이터 |
-| `content/projects.json` | 기존 프로젝트 8개의 제목, 설명, 분류, 역할, 기여 내용, 결과, 관련 링크 |
+| `content/projects.json` | 이력서 기준 서비스 프로젝트 5개와 기존 작업 8개의 상세 기여 |
 | `content/notes.json` | 기존 마크다운 학습 문서의 제목, 순서, 경로 |
 | `content/site.json` | 메뉴, 섹션 제목, 필터 이름, 버튼 및 안내 문구 |
 
@@ -19,7 +19,9 @@
 
 `index.html`은 자동 생성 파일입니다. 여기를 직접 수정하면 다음 빌드에서 덮어씁니다. JavaScript를 끈 브라우저도 본문과 기본 상세 펼치기를 읽을 수 있도록 정적 HTML을 생성합니다.
 
-프로젝트 추가 시 고유한 `id`, `title`, `summary`, `organization`, `categories`, `role`, `stack`, `context`, `contributions`, `outcome`, `links`, `expanded`를 입력합니다. 분류 값은 `site.json`의 `categories`에 등록된 ID를 사용합니다. 필터 개수는 자동 계산됩니다. 관련 링크가 없다면 `links: []`로 두며, 존재하지 않는 URL을 만들지 않습니다. `expanded: true`이면 처음부터 펼칩니다.
+프로젝트 추가 시 고유한 `id`, `title`, `summary`, `organization`, `categories`, `role`, `stack`, `kind`, `period`, `context`, `contributions`, `outcome`, `caseStudies`, `links`, `expanded`를 입력합니다. 분류 값은 `site.json`의 `categories`에 등록된 ID를 사용합니다. 필터 개수는 자동 계산됩니다. 관련 링크가 없다면 `links: []`로 두며, 존재하지 않는 URL을 만들지 않습니다. `expanded: true`이면 처음부터 펼칩니다.
+
+프로젝트 안의 `caseStudies`는 상세 기여 목록입니다. 각 항목은 고유한 `id`, `title`, `summary`, `context`, `contributions`, `outcome`을 가집니다. 회사 경력은 `profile.experience`, 기타 경험은 `profile.otherExperience`, 교육·자격은 `profile.background`에서 관리합니다. 경력의 `highlights[].projectId`는 실제 프로젝트의 ID와 일치해야 합니다. `resumeAsOf`는 이력서 기준 시점입니다.
 
 ## 실행과 검증
 
@@ -61,4 +63,4 @@ dist/                    # 별도 정적 호스팅용 출력 (Git 제외)
 
 ## 참고자료 사용 범위
 
-첨부된 원티드 16페이지 PDF는 디자인과 정보 배치만 참고했습니다. 예시 인물의 이력, 수치, 서비스, 아키텍처 이미지, 수상·발표 이력은 복사하지 않았습니다. 자세한 출처와 보존 범위는 [콘텐츠 편집 기준](docs/content-provenance.md)을 참고하세요.
+개인 콘텐츠는 사용자가 제공한 2026.09 이력서 PDF를 우선하여 반영했습니다. 원티드 16페이지 PDF는 디자인과 정보 배치만 참고했습니다. 예시 인물의 이력, 수치, 서비스, 아키텍처 이미지, 수상·발표 이력은 복사하지 않았습니다. 자세한 출처와 보존 범위는 [콘텐츠 편집 기준](docs/content-provenance.md)을 참고하세요.

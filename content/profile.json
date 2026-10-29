@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "김민재 | Junior Full-Stack Software Engineer",
-    "description": "김민재 주니어 풀스택 개발자 포트폴리오 - Java/Kotlin Spring 백엔드와 React/Next.js 프론트엔드 개발 경험",
+    "description": "김민재 풀스택 개발자 포트폴리오. Java/Kotlin·Spring, React·Next.js, React Native·Expo를 활용한 서비스 개발, 운영 및 앱 배포 경험.",
     "url": "https://gimminjae.github.io/portfolio/",
     "image": "images/og.webp"
   },
@@ -10,14 +10,14 @@
   "monogram": "MK",
   "role": "Junior Full-Stack Software Engineer",
   "headline": [
-    "서비스의 흐름을 이해하고,",
-    "더 나은 경험을 만듭니다."
+    "서비스의 전체 흐름을 이해하고,",
+    "사용자의 경험을 완성합니다."
   ],
-  "intro": "Java/Kotlin Spring 백엔드와 React/Next.js 프론트엔드를 다루는 풀스택 개발자입니다. 재사용성과 확장성을 고민하며, 실제 사용자 경험을 개선하는 데 집중합니다.",
-  "about": "2021년 12월부터 자바 백엔드 개발자로 커리어를 시작해, 현재는 Kotlin/Spring 기반 백엔드와 React/Next.js 기반 프론트엔드를 함께 개발하고 있습니다. 기능 구현뿐 아니라 운영 이슈 대응, 성능 개선, 아키텍처 도입(MSA/Hexagonal)까지 폭넓게 경험했습니다.",
+  "intro": "Java/Kotlin·Spring 백엔드부터 React·Next.js 프론트엔드, React Native·Expo 앱까지. 재사용성과 확장성을 고민하며, 서비스 개발과 운영 경험을 쌓아온 풀스택 개발자입니다.",
+  "about": "2021년 12월 자바 백엔드 개발자로 커리어를 시작했습니다. 서비스가 완성되기까지 필요한 프론트엔드, 인프라, 아키텍처와 도메인 지식에 관심을 두고 배우며, 프로젝트 개발·운영 과정에서 기술과 커뮤니케이션 역량을 발전시켜왔습니다.",
   "photo": {
-    "src": "images/portfolio.png",
-    "alt": "김민재 프로필 사진"
+    "src": "images/profile-resume.jpg",
+    "alt": "김민재 이력서 프로필 사진"
   },
   "email": "min356812@naver.com",
   "phone": "010-2952-5866",
@@ -34,97 +34,115 @@
   "focus": [
     {
       "label": "Back-end",
-      "value": "Kotlin · Java · Spring Boot"
+      "value": "Java · Kotlin · Spring"
     },
     {
       "label": "Front-end",
       "value": "React · Next.js · TypeScript"
     },
     {
-      "label": "Architecture",
-      "value": "MSA · Hexagonal"
+      "label": "Mobile",
+      "value": "React Native · Expo"
     }
   ],
   "experience": [
     {
       "organization": "아이디알시스템",
       "role": "Junior Full-Stack Software Engineer",
-      "period": "2022.12 — Present",
+      "period": "2022.12 — 2026.04",
+      "description": "자사 솔루션 유지보수 및 SI 프로젝트 수행",
       "highlights": [
         {
-          "title": "라이프 체크 FO UI 리뉴얼",
-          "description": "검진기관/검진프로그램 비교 및 금액 비교 UX 개선"
+          "title": "새롬 케어 라이프 체크",
+          "description": "건강검진 예약 중개 서비스 개발·유지보수·운영",
+          "period": "2024.06 — 2026.03",
+          "projectId": "life-check"
         },
         {
-          "title": "검진기관 CAPA 관리",
-          "description": "Kotlin/Spring 예약 수용량 정책 개발 및 운영 고도화"
+          "title": "핀앳",
+          "description": "근태관리 솔루션 앱 개발 및 성능 개선",
+          "period": "2024.03 — 2024.05",
+          "projectId": "pinat"
         },
         {
-          "title": "MSA & Hexagonal 전환",
-          "description": "도메인 분리와 아키텍처 개선으로 유지보수성 향상"
+          "title": "씨젠의료재단 차세대 프로젝트",
+          "description": "접수·고객 시스템 운영 및 장애 대응",
+          "period": "2023.08 — 2024.02",
+          "projectId": "seegene"
         },
         {
-          "title": "예약 프로세스 이슈 대응",
-          "description": "특정 사용자 네트워크 장애 원인 분석 및 해결"
-        }
-      ]
-    },
-    {
-      "organization": "멋쟁이사자처럼 백엔드스쿨 KDT",
-      "role": "백엔드 개발 교육 · 프로젝트",
-      "period": "2022.06 — 2022.11",
-      "highlights": [
-        {
-          "title": "전자상거래 백오피스 React 전환",
-          "description": "Thymeleaf 화면을 React 기반으로 마이그레이션"
-        },
-        {
-          "title": "품질 개선 체계 적용",
-          "description": "SonarQube 규칙 기반 코드 품질 개선 경험 축적"
+          "title": "자사 이커머스 솔루션",
+          "description": "React 전환 및 SonarQube 기반 품질 개선",
+          "period": "2023.08 — 2024.02",
+          "projectId": "ecommerce"
         }
       ]
     }
   ],
   "skills": [
     {
-      "name": "Back-end",
-      "description": "도메인과 데이터 흐름을 고려한 서버 개발",
+      "name": "Back-end & Architecture",
+      "description": "서버 개발, 데이터 접근과 아키텍처 개선",
       "items": [
-        "Kotlin",
         "Java",
+        "Kotlin",
         "Spring Boot",
-        "JPA",
         "MyBatis",
+        "JPA",
+        "MSA",
+        "Hexagonal Architecture",
         "MySQL",
-        "PostgreSQL"
+        "PostgreSQL",
+        "Oracle",
+        "Node.js",
+        "Express.js"
       ]
     },
     {
       "name": "Front-end",
-      "description": "재사용 가능한 구조와 사용자 경험 개선",
+      "description": "사용자 서비스와 백오피스 화면 개발",
       "items": [
-        "React.js",
-        "Next.js",
+        "HTML",
+        "CSS",
         "JavaScript",
         "TypeScript",
+        "React.js",
+        "Next.js",
         "Redux",
+        "Formik",
         "Tailwind CSS",
-        "Formik"
+        "Thymeleaf",
+        "jQuery",
+        "Vue.js",
+        "Nuxt.js",
+        "Nexacro"
       ]
     },
     {
-      "name": "Architecture & Tools",
-      "description": "구조 개선부터 협업, 배포, 코드 품질까지",
+      "name": "Mobile & Services",
+      "description": "모바일 앱 개발과 스토어 배포",
       "items": [
-        "MSA",
-        "Hexagonal Architecture",
+        "React Native",
+        "Expo",
+        "Supabase",
+        "AWS S3",
+        "GlueStack UI",
+        "App Store",
+        "Google Play"
+      ]
+    },
+    {
+      "name": "Tools & Collaboration",
+      "description": "개발, 데이터 확인, 코드 품질과 협업 도구",
+      "items": [
         "IntelliJ",
         "VSCode",
-        "Cursor",
-        "GitLab",
-        "AWS CodeCommit",
+        "Cursor AI",
+        "Codex",
         "DBeaver",
         "ERDCloud",
+        "GitLab",
+        "AWS CodeCommit",
         "ArgoCD",
         "SonarQube",
         "Axios",
@@ -135,18 +153,29 @@
   "background": [
     {
       "kind": "Certification",
-      "title": "SQLD",
+      "title": "정보처리산업기사",
+      "detail": "2026.09"
+    },
+    {
+      "kind": "Certification",
+      "title": "SQLD (SQL 개발자)",
       "detail": "2021.11"
     },
     {
       "kind": "Education",
       "title": "멋쟁이사자처럼 백엔드스쿨 KDT",
-      "detail": "2022.06 — 2022.11"
+      "detail": "2022.06 — 2022.11",
+      "description": "HTML·CSS·JavaScript, Thymeleaf, Java·Spring, JPA 학습 및 개인·팀 프로젝트 수행"
     },
     {
       "kind": "Education",
       "title": "경기대학교 행정학과",
-      "detail": "중퇴"
+      "detail": "2022 · 중퇴"
+    },
+    {
+      "kind": "Education",
+      "title": "구리남자고등학교",
+      "detail": "2019 · 졸업"
     }
   ],
   "legacySelfAssessment": [
@@ -173,6 +202,34 @@
     {
       "skill": "MSA / Hexagonal Architecture",
       "percent": 75
+    }
+  ],
+  "resumeAsOf": "2026.09",
+  "careerStart": "2021.12",
+  "principles": [
+    {
+      "title": "함께 쓰기 좋은 코드",
+      "description": "여러 화면에서 사용하는 컴포넌트와 함수를 공통화해 개발팀의 생산성과 편의성을 높였습니다."
+    },
+    {
+      "title": "역할을 넘어 전체 흐름으로",
+      "description": "프론트엔드부터 백엔드, 운영과 장애 대응까지 필요한 영역을 배우고, 사용자의 경험을 기준으로 개선합니다."
+    }
+  ],
+  "otherExperience": [
+    {
+      "organization": "We Bible (위 바이블)",
+      "role": "모바일 앱 개발 · 스토어 배포",
+      "period": "2026.02 — 현재",
+      "description": "React Native·Expo 기반 앱 개발과 App Store·Google Play 배포 경험",
+      "highlights": [
+        {
+          "title": "앱 개발부터 배포까지",
+          "description": "Supabase와 AWS S3를 활용하고, 두 앱 스토어에 배포",
+          "period": "",
+          "projectId": "we-bible"
+        }
+      ]
     }
   ]
 }

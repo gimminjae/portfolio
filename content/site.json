@@ -1,6 +1,6 @@
 {
   "brandLabel": "Developer portfolio",
-  "edition": "경험을 연결하고, 개선을 쌓아갑니다.",
+  "edition": "웹에서 모바일까지, 서비스의 전체 흐름을 만듭니다.",
   "navigation": [
     {
       "id": "home",
@@ -9,7 +9,7 @@
     },
     {
       "id": "experience",
-      "label": "경력",
+      "label": "경력 · 활동",
       "en": "Experience"
     },
     {
@@ -41,18 +41,18 @@
   "sections": {
     "experience": {
       "eyebrow": "01 / EXPERIENCE",
-      "title": "실무에서 쌓아온 경험",
-      "description": "백엔드에서 시작해 프론트엔드와 서비스 운영까지."
+      "title": "만들고, 운영하며 쌓은 경험",
+      "description": "회사에서의 서비스 개발·운영과 모바일 앱 프로젝트 경험입니다."
     },
     "work": {
       "eyebrow": "02 / PROJECTS",
       "title": "문제를 마주하고, 개선하다.",
-      "description": "사용자 경험, 서비스 구조, 운영 안정성을 고민한 프로젝트들입니다."
+      "description": "서비스와 프로젝트를 중심으로 역할과 구체적인 기여를 정리했습니다."
     },
     "skills": {
       "eyebrow": "03 / SKILLS",
       "title": "아이디어를 구현하는 기술",
-      "description": "백엔드에서 프론트엔드, 운영과 성능 개선까지 서비스 개발 전반을 다룹니다."
+      "description": "웹 백엔드와 프론트엔드, 모바일 앱과 운영 경험에서 사용한 기술입니다."
     },
     "notes": {
       "eyebrow": "04 / NOTES",
@@ -84,20 +84,12 @@
       "label": "Back-end"
     },
     {
+      "id": "mobile",
+      "label": "Mobile"
+    },
+    {
       "id": "operations",
-      "label": "Operations"
-    },
-    {
-      "id": "life-check",
-      "label": "라이프 체크"
-    },
-    {
-      "id": "pinat",
-      "label": "핀앳"
-    },
-    {
-      "id": "backoffice",
-      "label": "백오피스"
+      "label": "운영"
     },
     {
       "id": "architecture",
@@ -138,6 +130,14 @@
     "notesLink": "기록 읽기",
     "allProjects": "ALL PROJECTS",
     "profileLinks": "프로필 링크",
-    "projectLinks": "관련 링크"
+    "projectLinks": "관련 링크",
+    "workExperience": "WORK EXPERIENCE",
+    "otherExperience": "OTHER EXPERIENCE",
+    "caseStudies": "상세 기여",
+    "caseStudyCount": "개의 상세 기여",
+    "careerStart": "개발 시작",
+    "period": "참여 기간",
+    "resumeEdition": "RESUME /",
+    "projectDetail": "프로젝트 보기"
   }
 }
