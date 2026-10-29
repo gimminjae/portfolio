@@ -220,6 +220,12 @@ details[open] .project-title { color:var(--accent); }
  .project-metric strong { font-size:34.5px; }
 }
 @media print {
+ /* Start only the main sections on new pages; long experience content may flow. */
+ main > section + section { page-break-before:always; break-before:page; }
+ main > .content-section { padding-top:0; }
+ main > .contact-section { margin-top:0; }
+ .experience-row,.project summary { break-after:avoid; }
+
  .project { break-inside:auto; }
  .project summary,.project-facts,.project-story,.project-outcome,.project-stack,.case-study,.principles { break-inside:avoid; }
  .case-studies-label { break-after:avoid; }
