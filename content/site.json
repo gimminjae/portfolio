@@ -9,13 +9,8 @@
     },
     {
       "id": "experience",
-      "label": "경력 · 활동",
-      "en": "Experience"
-    },
-    {
-      "id": "work",
-      "label": "프로젝트",
-      "en": "Projects"
+      "label": "경력 및 프로젝트",
+      "en": "Experience & Projects"
     },
     {
       "id": "skills",
@@ -23,13 +18,8 @@
       "en": "Skills"
     },
     {
-      "id": "notes",
-      "label": "기록",
-      "en": "Notes"
-    },
-    {
       "id": "background",
-      "label": "교육 · 자격",
+      "label": "학력 및 자격증",
       "en": "Background"
     },
     {
@@ -40,32 +30,22 @@
   ],
   "sections": {
     "experience": {
-      "eyebrow": "01 / EXPERIENCE",
-      "title": "만들고, 운영하며 쌓은 경험",
-      "description": "회사에서의 서비스 개발·운영과 모바일 앱 프로젝트 경험입니다."
-    },
-    "work": {
-      "eyebrow": "02 / PROJECTS",
-      "title": "문제를 마주하고, 개선하다.",
-      "description": "서비스와 프로젝트를 중심으로 역할과 구체적인 기여를 정리했습니다."
+      "eyebrow": "01 / EXPERIENCE & PROJECTS",
+      "title": "경력 및 프로젝트",
+      "description": "서비스를 개발하고 운영하며 쌓은 경험과 프로젝트별 역할·기여를 소개합니다."
     },
     "skills": {
-      "eyebrow": "03 / SKILLS",
+      "eyebrow": "02 / SKILLS",
       "title": "아이디어를 구현하는 기술",
       "description": "웹 백엔드와 프론트엔드, 모바일 앱과 운영 경험에서 사용한 기술입니다."
     },
-    "notes": {
-      "eyebrow": "04 / NOTES",
-      "title": "배운 것을 나의 언어로",
-      "description": "컴퓨터구조와 프로그래밍을 읽고 정리한 학습 기록입니다."
-    },
     "background": {
-      "eyebrow": "05 / BACKGROUND",
-      "title": "배움의 발자취",
+      "eyebrow": "03 / BACKGROUND",
+      "title": "학력 및 자격증",
       "description": ""
     },
     "contact": {
-      "eyebrow": "06 / CONTACT",
+      "eyebrow": "04 / CONTACT",
       "title": "함께 만들 이야기가 있다면.",
       "description": "새로운 연결을 기다립니다. 편하게 연락 주세요."
     }
@@ -127,7 +107,6 @@
     "copyError": "복사하지 못했습니다. 이메일 주소를 직접 선택해 주세요.",
     "toTop": "맨 위로",
     "footer": "© Minjae Kim. All rights reserved.",
-    "notesLink": "기록 읽기",
     "allProjects": "ALL PROJECTS",
     "profileLinks": "프로필 링크",
     "projectLinks": "관련 링크",

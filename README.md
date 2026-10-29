@@ -2,7 +2,7 @@
 
 [포트폴리오 보기](https://gimminjae.github.io/portfolio/)
 
-흰 종이와 문서형 타이포그래피를 중심으로 소개, 경력, 프로젝트별 개요·역할·기여·결과, 기술, 학습 기록, 교육·자격, 연락처를 보여주는 정적 사이트입니다. 개인 콘텐츠는 UI 코드와 분리되어 있습니다.
+흰 종이와 문서형 타이포그래피를 중심으로 소개, 경력 및 프로젝트별 개요·역할·기여·결과, 기술, 학력 및 자격증, 연락처를 보여주는 정적 사이트입니다. 개인 콘텐츠는 UI 코드와 분리되어 있습니다.
 
 ## 콘텐츠 수정
 
@@ -10,7 +10,7 @@
 | --- | --- |
 | `content/profile.json` | 이름, 소개, 사진, 연락처, 경력, 기술, 교육·자격, 검색/공유 메타데이터 |
 | `content/projects.json` | 이력서 기준 서비스 프로젝트 5개와 기존 작업 8개의 상세 기여 |
-| `content/notes.json` | 기존 마크다운 학습 문서의 제목, 순서, 경로 |
+| `content/notes.json` | 보존된 마크다운 학습 문서의 제목, 순서, 경로 (홈페이지 미노출) |
 | `content/site.json` | 메뉴, 섹션 제목, 필터 이름, 버튼 및 안내 문구 |
 
 1. 위 JSON 파일을 수정합니다.
@@ -22,6 +22,8 @@
 프로젝트 추가 시 고유한 `id`, `title`, `summary`, `organization`, `categories`, `role`, `stack`, `kind`, `period`, `context`, `contributions`, `outcome`, `caseStudies`, `links`, `expanded`를 입력합니다. 분류 값은 `site.json`의 `categories`에 등록된 ID를 사용합니다. 필터 개수는 자동 계산됩니다. 관련 링크가 없다면 `links: []`로 두며, 존재하지 않는 URL을 만들지 않습니다. `expanded: true`이면 처음부터 펼칩니다.
 
 프로젝트 안의 `caseStudies`는 상세 기여 목록입니다. 각 항목은 고유한 `id`, `title`, `summary`, `context`, `contributions`, `outcome`을 가집니다. 회사 경력은 `profile.experience`, 기타 경험은 `profile.otherExperience`, 교육·자격은 `profile.background`에서 관리합니다. 경력의 `highlights[].projectId`는 실제 프로젝트의 ID와 일치해야 합니다. `resumeAsOf`는 이력서 기준 시점입니다.
+
+경력과 기타 활동의 요약, 프로젝트 필터와 상세는 하나의 **경력 및 프로젝트** 섹션으로 표시됩니다. 기존 `#experience`, `#work`, 프로젝트별 주소는 유지합니다. NOTES 섹션은 제거했지만 학습 문서 원본과 뷰어는 보존합니다.
 
 ## 실행과 검증
 

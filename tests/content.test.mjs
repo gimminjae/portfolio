@@ -35,16 +35,29 @@ test('includes all five resume projects and the newly supplied responsibilities'
   const seegene = content.projects.find((p) => p.id === 'seegene');
   assert.ok(seegene.contributions.some((text) => text.includes('로그 분석')));
 });
-test('all navigation, project and article links resolve in the generated page', () => {
+test('all navigation and preserved project anchors resolve in the generated page', () => {
   const html = renderPage(content);
   const ids = [...html.matchAll(/\bid="([^"]+)"/g)].map((m) => m[1]);
   assert.equal(ids.length, new Set(ids).size);
   for (const [, target] of html.matchAll(/href="#([^"]+)"/g)) assert.ok(ids.includes(target), target);
-  for (const note of content.notes) assert.ok(html.includes(encodeURIComponent(note.path)));
   for (const p of content.projects) assert.ok(html.includes(`id="project-${p.id}"`));
   for (const id of ['life-check-ui', 'capa', 'architecture', 'frontend-shared', 'api-performance', 'reservation-network', 'pinat', 'backoffice']) {
     assert.ok(ids.includes(`project-${id}`), `Missing earlier project anchor: ${id}`);
   }
+});
+test('merges experience and projects, removes Notes, and renames education', () => {
+  const html = renderPage(content);
+  assert.deepEqual(content.site.navigation.map(({ id }) => id), ['home', 'experience', 'skills', 'background', 'contact']);
+  assert.ok(!html.includes('id="notes"'));
+  assert.ok(!html.includes('href="#notes"'));
+  assert.ok(!html.includes('<section id="work"'));
+  const experience = html.slice(html.indexOf('<section id="experience"'), html.indexOf('<section id="skills"'));
+  assert.ok(experience.includes('아이디알시스템'));
+  assert.ok(experience.includes('id="work"'));
+  for (const project of content.projects) assert.ok(experience.includes(`id="project-${project.id}"`));
+  assert.ok(html.includes('<h2>학력 및 자격증</h2>'));
+  assert.ok(!html.includes('배움의 발자취'));
+  assert.ok(content.notes.length > 0, 'Keep the original article data archived');
 });
 test('changing only content changes page copy and metadata without changing components', () => {
   const next = structuredClone(content);
@@ -89,7 +102,7 @@ test('filter counts are derived from project membership', () => {
 });
 test('home page has complete content without JavaScript or remote libraries', () => {
   const html = renderPage(content);
-  assert.ok(html.includes(content.profile.about));
+  assert.ok(html.includes(escapeHtml(content.profile.about)));
   assert.ok(!/<script[^>]+src="https?:/.test(html));
   assert.ok(!html.includes('href="#"'));
   assert.ok(!/TPS 300|794ms|211ms|hello wanted|hello_wanted|3,000/.test(html));
