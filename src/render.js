@@ -29,7 +29,7 @@ function projectView(p, index, site) {
     ${p.links.length ? `<nav class="project-links" aria-label="${e(l.projectLinks)}">${p.links.map((link) => external(link)).join('')}</nav>` : ''}
   </div></details></article>`;
 }
-export function renderPage({ profile: p, projects, site: s }) {
+export function renderPage({ profile: p, projects, site: s }, { styleVersion = '' } = {}) {
   const l = s.labels;
   const nav = s.navigation.map((item, i) => `<a href="#${e(item.id)}"${i === 0 ? ' aria-current="location"' : ''}><span class="nav-number">${String(i).padStart(2, '0')}</span><span>${e(item.label)}</span></a>`).join('');
   const filters = s.categories.map((category) => {
@@ -43,7 +43,7 @@ export function renderPage({ profile: p, projects, site: s }) {
 <title>${e(p.meta.title)}</title><meta name="description" content="${e(p.meta.description)}"><meta name="author" content="${e(p.name)}">
 <meta name="color-scheme" content="light"><meta name="theme-color" content="#fafaf8"><link rel="canonical" href="${e(p.meta.url)}">
 <meta property="og:type" content="website"><meta property="og:title" content="${e(p.meta.title)}"><meta property="og:description" content="${e(p.meta.description)}"><meta property="og:url" content="${e(p.meta.url)}"><meta property="og:image" content="${e(new URL(p.meta.image, p.meta.url).href)}">
-<link rel="icon" href="images/favicon.ico"><link rel="stylesheet" href="css/style.css"><script type="module" src="src/main.js"></script>
+<link rel="icon" href="images/favicon.ico"><link rel="stylesheet" href="css/style.css${styleVersion ? `?v=${e(styleVersion)}` : ''}"><script type="module" src="src/main.js"></script>
 </head><body>
 <a class="skip-link" href="#main">${e(l.skip)}</a>
 <header class="topbar"><div class="topbar-inner"><a class="brand" href="#home" aria-label="${e(p.englishName)}"><span>${e(p.monogram)}<i>.</i></span><span class="brand-caption">${e(s.brandLabel)}</span></a><div class="topbar-actions">${external(p.links[0], 'header-github')}<button class="print-button" type="button" data-print hidden><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M7 8V3h10v5M7 17H4V9h16v8h-3M7 14h10v7H7z"/></svg>${e(l.print)}</button><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="section-nav" data-open-label="${e(l.openMenu)}" data-close-label="${e(l.closeMenu)}" hidden>${e(l.openMenu)}</button></div></div></header>
